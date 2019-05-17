@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <Navbar/>
-    <div id="cv_items_5" v-for="item in items">
+    <div id="cv_items_5" v-for="item in items" :key="item">
       <p class="display-3">{{item.Section}}</p>
       <p></p>
-      <div id="cv_items_sub" v-for="item2 in item.Items">
+      <div id="cv_items_sub" v-for="item2 in item.Items" :key="item2">
         <b-card :title="item2.name" :sub-title="item2.description">
           <b-card-text>{{item2.date_start}} - {{item2.date_finish}}</b-card-text>
         </b-card>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -20,7 +21,8 @@ import Footer from "../../components/Footer.vue";
 export default {
   name: "app",
   components: {
-    Navbar
+    Navbar,
+    Footer
   },
   data() {
     return {

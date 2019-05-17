@@ -52,7 +52,7 @@
       <div slot="acceptContent">{{$t('accept_cookies')}}</div>
     </vue-cookie-accept-decline>
 
-    <Footer/>
+    <Footer sticky="yes"/>
   </div>
 </template>
 
@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     cookieClickedDecline() {
-      console.log("Rechazo");
       window.history.back();
     }
   }
@@ -148,6 +147,13 @@ h2.statement {
   h1.title {
     font-size: 2.5rem;
   }
+  .main-title {
+  margin-top: 4em;
+  margin-left: 0.5em;
+  margin-right:0.5em;
+  color: #000;
+  z-index: 999;
+}
 }
 
 .link-accent {

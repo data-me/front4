@@ -14,12 +14,11 @@
         aria-describedby="passwordHelpBlock"
       />
       <br>
+      <br>
       <b-button type="submit" variant="primary">{{$t('login')}}</b-button>
     </b-form>
 
     <router-view></router-view>
-
-    <Footer/>
   </div>
 </template>
 
@@ -103,7 +102,7 @@ export default {
 
 #form {
   padding-top: 5em;
-  width: 50%;
+  width: 18rem;
   text-align: center;
   display: inline-block;
 
