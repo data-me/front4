@@ -354,7 +354,7 @@ export default {
   mounted: function() {
     var token = "JWT " + this.$cookies.get("token");
 
-    this.$http.get("https://api3-datame.herokuapp.com/api/v2/get_user_logged", {
+    this.$http.get("http://localhost:8000/api/v2/get_user_logged", {
         headers: { Authorization: token }
       })
       .then(result => {
@@ -367,7 +367,7 @@ export default {
         this.form.address = this.user.address;
       });
 
-    this.$http.get('https://api3-datame.herokuapp.com/api/v3/section_names_available',{ headers:
+    this.$http.get('http://localhost:8000/api/v3/section_names_available',{ headers:
     { Authorization: token }
     }).then(result => {
         this.section_names = result.data;
@@ -375,7 +375,7 @@ export default {
 
 
     this.$http
-      .get("https://api3-datame.herokuapp.com/api/v1/cv", {
+      .get("http://localhost:8000/api/v1/cv", {
         headers: { Authorization: token }
       })
       .then(result => {
@@ -424,7 +424,7 @@ export default {
         formData.append("photo", this.form.photo);
         formData.append("address", this.form.address);
         this.$http
-          .post("https://api3-datame.herokuapp.com/api/v2/change_info", formData, {
+          .post("http://localhost:8000/api/v2/change_info", formData, {
             headers: { Authorization: token }
           })
           .then(result => {
@@ -519,7 +519,7 @@ export default {
         formData.append("secid", this.formDiobrando.secid);
         formData.append("itemid", this.formDiobrando.itemid);
         this.$http
-          .post("https://api3-datame.herokuapp.com/api/v1/item", formData, {
+          .post("http://localhost:8000/api/v1/item", formData, {
             headers: { Authorization: token }
           })
           .then(result => {
@@ -531,35 +531,36 @@ export default {
     },
     deleteItem(item_id, text) {
       var token = "JWT " + this.$cookies.get("token");
-      var confirm = window.confirm(text);
-
-      if (confirm) {
-        this.$http.delete(
-          "https://api3-datame.herokuapp.com/api/v2/data/delete_item/" + item_id,
-          {
-            headers: {
-              Authorization: token
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
+          this.$http.delete(
+            "http://localhost:8000/api/v2/data/delete_item/" + item_id,
+            {
+              headers: {
+                Authorization: token
+              }
             }
-          }
-        );
-        window.location.href = "/my_cv.html";
-      }
+          );
+          window.location.href = "/my_cv.html";
+        }
+      })
     },
     deleteSection(section_id, text) {
       var token = "JWT " + this.$cookies.get("token");
       var confirm = window.confirm(text);
-
-      if (confirm) {
-        this.$http.delete(
-          "https://api3-datame.herokuapp.com/api/v2/data/delete_section/" + section_id,
-          {
-            headers: {
-              Authorization: token
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
+          this.$http.delete(
+            "http://localhost:8000/api/v2/data/delete_section/" + section_id,
+            {
+              headers: {
+                Authorization: token
+              }
             }
-          }
-        );
-        window.location.href = "/my_cv.html";
-      }
+          );
+          window.location.href = "/my_cv.html";
+        }
+      })
     },
     saveIds: function(item) {
       this.formDiobrando.itemid = item.id;
@@ -576,21 +577,21 @@ export default {
     },
     exportasPDF(user) {
       if (this.language == "en") {
-        var olawenas =
+        var text =
           "This will download files to your computer. Are you sure?";
         var email = "E-mail: ";
         var address = "Address: ";
         var phone = "Phone: ";
       } else {
-        var olawenas =
+        var text =
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
         var email = "Correo electrónico: ";
         var address = "Dirección: ";
         var phone = "Teléfono: ";
       }
-      var continuar = window.confirm(olawenas);
 
-      if (continuar) {
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
         var nameSurname = user.name + " " + user.surname;
         let pdfName = nameSurname;
 
@@ -633,18 +634,18 @@ export default {
         // Saving PDF
         doc.save(pdfName + ".pdf");
       }
+      })
     },
     exportasRAW(user) {
       if (this.language == "en") {
-        var olawenas =
+        var text =
           "This will download files to your computer. Are you sure?";
       } else {
-        var olawenas =
+        var text =
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
       }
-      var continuar = window.confirm(olawenas);
-
-      if (continuar) {
+       this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
         var text =
           "{name:" +
           user.name +
@@ -685,7 +686,8 @@ export default {
           null
         );
         a.dispatchEvent(e);
-      }
+      } 
+    })
     }
   }
 };
