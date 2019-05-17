@@ -209,5 +209,12 @@
   "upgrade": "Suscribir",
   "manage_users": "Gestionar usuarios",
   "companies" : "Empresas",
-  "data_scientists": "Cientificos de Datos"
+  "data_scientists": "Cientificos de Datos",
+  "submited_notification":"Mensaje enviado con éxito",
+  "fix_errors":"Por favor corrija los errores encontrados.",
+  "successful_apply":"Se ha creado su propuesta de forma satisfactoria.",
+  "updated_apply":"Se ha actualizado correctamente su propuesta.",
+  "updated_offer":"Se ha actualizado correctamente su oferta.",
+  "successful_del_offer":"Se ha eliminado de forma satisfactoria su oferta.",
+  "successful_acc_apply": "La propuesta se ha aceptado correctamente."
 }

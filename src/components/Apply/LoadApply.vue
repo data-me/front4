@@ -129,7 +129,7 @@ Vue.use(VueRouter)
        var token = 'JWT ' + this.$cookies.get('token')
        var formAccept = new FormData()
        formAccept.append('applyId', id)
-       this.$http.post('https://api3-datame.herokuapp.com/api/v1/check_submition', formAccept, { headers:
+       this.$http.post('http://localhost:8000/api/v1/check_submition', formAccept, { headers:
       { Authorization: token }
       }).then((result) => {
           this.permissions = String (result.data.message)
@@ -146,13 +146,12 @@ Vue.use(VueRouter)
     },
       getOffer(offerId){
     var token = 'JWT ' + this.$cookies.get('token')
-    this.$http.get('https://api3-datame.herokuapp.com/api/v1/offer?offerId=' + offerId,{ headers:
+    this.$http.get('http://localhost:8000/api/v1/offer?offerId=' + offerId,{ headers:
       { Authorization: token }
       }).then((result) => {
         this.offertodl = result.data,
         this.url = this.offertodl.file
-        alert(this.url)
-
+        this.$bvModal.msgBoxOk(this.url)
       })
   },
       redirectTo(offerId){
@@ -160,32 +159,35 @@ Vue.use(VueRouter)
       },
 
       toggleAcceptApply(id, text) {
-        if(confirm(text)){
-          var token = 'JWT ' + this.$cookies.get('token')
-          var formAccept = new FormData()
-          formAccept.append('idApply', id)
-          this.$http.post('https://api3-datame.herokuapp.com/api/v1/accept', formAccept, { headers:
-          { Authorization: token }
-          }).then((result) => {
-              alert("Successfully accepted apply")
-              location.reload()
-          })
-        }
+         this.$bvModal.msgBoxConfirm(text).then(value => {
+            if(value === true){
+              var token = 'JWT ' + this.$cookies.get('token')
+              var formAccept = new FormData()
+              formAccept.append('idApply', id)
+              this.$http.post('http://localhost:8000/api/v1/accept', formAccept, { headers:
+              { Authorization: token }
+              }).then((result) => {
+                  this.$bvModal.msgBoxOk(this.$t('sucessful_acc_apply'))
+                  location.reload()
+              })
+        }})
      },
 
      deleteApplication(applicationId, text) {
-      if(confirm(text)){
-        var token = 'JWT ' + this.$cookies.get('token')
-        this.$http.delete('https://api3-datame.herokuapp.com/api/v2/application/' + applicationId, { headers: { Authorization: token }}).then((result) => {
-            if (result.data.code == '200') {
-              alert(this.$t('delete_app_success'))
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+            if(value === true){
+              var token = 'JWT ' + this.$cookies.get('token')
+              this.$http.delete('http://localhost:8000/api/v2/application/' + applicationId, { headers: { Authorization: token }}).then((result) => {
+                  if (result.data.code == '200') {
+                    alert(this.$t('delete_app_success'))
+                  }
+                  if (result.data.code == '401') {
+                    alert(this.$t('delete_app_not_allowed'))
+                  }
+                  location.reload()
+              })
             }
-            if (result.data.code == '401') {
-              alert(this.$t('delete_app_not_allowed'))
-            }
-            location.reload()
-        })
-       }
+      })
      },
      toggleEdit(id) {
        this.showEdit = true
@@ -198,7 +200,7 @@ Vue.use(VueRouter)
       var body = new FormData()
       body.append('description', this.applyDescription)
 
-       this.$http.post('https://api3-datame.herokuapp.com/api/v2/application/' + this.applicationId, body, { headers:
+       this.$http.post('http://localhost:8000/api/v2/application/' + this.applicationId, body, { headers:
         { Authorization: token }
         }).then((result) => {
             if (result.data.code == '200') {

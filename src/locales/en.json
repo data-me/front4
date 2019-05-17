@@ -209,5 +209,12 @@
   "upgrade": "Upgrade",
   "manage_users": "Manage Users",
   "companies" : "Companies",
-  "data_scientists": "Data Scientists"
+  "data_scientists": "Data Scientists",
+  "submited_notification":"Successfully sent the message",
+  "fix_errors":"Please fix errors found in your form.", 
+  "successful_apply":"Successfully created a new application.",
+  "updated_offer":"Successfully updated your offer.",
+  "updated_apply":"Successfully updated your application.",
+  "successful_del_offer":"Successfully deleted your offer.",
+  "successful_acc_apply": "Successfully accepeted the application."
 }

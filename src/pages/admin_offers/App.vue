@@ -80,7 +80,7 @@ export default {
   mounted: function() {
     var token = "JWT " + this.$cookies.get("token");
     this.$http
-      .get("https://api3-datame.herokuapp.com/api/v2/admin/offers", {
+      .get("http://localhost:8000/api/v2/admin/offers", {
         headers: { Authorization: token }
       })
       .then(result => {
@@ -91,28 +91,28 @@ export default {
   methods: {
     deleteOffer(offer_id) {
       var token = "JWT " + this.$cookies.get("token");
-      var confirm = window.confirm(
-        "Are you sure you want to delete this offer?"
-      );
-
-      if (confirm) {
-        this.$http
-          .delete(
-            "https://api3-datame.herokuapp.com/api/v2/admin/delete_offer/" + offer_id,
-            {
-              headers: {
-                Authorization: token
+    
+      this.$bvModal.msgBoxConfirm(this.$t('confirm_delete_offer')).then(value => {
+        if(value === true){
+      
+          this.$http
+            .delete(
+              "http://localhost:8000/api/v2/admin/delete_offer/" + offer_id,
+              {
+                headers: {
+                  Authorization: token
+                }
               }
-            }
-          )
-          .then(result => {
-            alert(result.data.message);
-            window.location.href = "/admin_offers.html";
-          });
+            )
+            .then(result => {
+              this.$bvModal.msgBoxOk(this.$t('successful_del_offer'));
+              window.location.href = "/admin_offers.html";
+            });
       }
-    }
-  }
-};
+    })
+  },
+},
+}
 </script>
 
 <style>

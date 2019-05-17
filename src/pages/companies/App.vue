@@ -173,7 +173,7 @@ export default {
     this.$i18n.locale = lang;
 
     this.$http
-      .get("https://api3-datame.herokuapp.com/api/v1/company", {
+      .get("http://localhost:8000/api/v1/company", {
         headers: { Authorization: token }
       })
       .then(result => {
@@ -181,7 +181,7 @@ export default {
       });
 
     this.$http
-      .get("https://api3-datame.herokuapp.com/api/v2/get_user_logged", {
+      .get("http://localhost:8000/api/v2/get_user_logged", {
         headers: { Authorization: token }
       })
       .then(result => {
@@ -222,7 +222,7 @@ export default {
         formData.append("description", this.form.description);
         formData.append("logo", this.form.logo);
         this.$http
-          .post("https://api3-datame.herokuapp.com/api/v2/change_info", formData, {
+          .post("http://localhost:8000/api/v2/change_info", formData, {
             headers: { Authorization: token }
           })
           .then(result => {
@@ -234,71 +234,74 @@ export default {
     },
     exportasPDF(items) {
       if (this.language == "en") {
-        var olawenas =
+        var text =
           "This will download files to your computer. Are you sure?";
       } else {
-        var olawenas =
+        var text =
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
       }
-      var continuar = window.confirm(olawenas);
 
-      if (continuar) {
-        let pdfName = items[0].name;
 
-        var doc = new jsPDF("p", "mm", "a4");
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
+          let pdfName = items[0].name;
 
-        // Adding name of the copany
+          var doc = new jsPDF("p", "mm", "a4");
 
-        doc.setFontSize(20);
+          // Adding name of the copany
 
-        doc.text(items[0].name.toUpperCase(), 10, 10);
+          doc.setFontSize(20);
 
-        // Adding description of the company
+          doc.text(items[0].name.toUpperCase(), 10, 10);
 
-        doc.setFontSize(14);
+          // Adding description of the company
 
-        var lMargin = 15;
-        var rMargin = 15;
-        var pdfInMM = 210;
+          doc.setFontSize(14);
 
-        var description = items[0].description;
+          var lMargin = 15;
+          var rMargin = 15;
+          var pdfInMM = 210;
 
-        var lines = doc.splitTextToSize(
-          description,
-          pdfInMM - lMargin - rMargin
-        );
+          var description = items[0].description;
 
-        doc.text(lMargin, 20, lines);
+          var lines = doc.splitTextToSize(
+            description,
+            pdfInMM - lMargin - rMargin
+          );
 
-        // Adding NIF of the company
+          doc.text(lMargin, 20, lines);
 
-        doc.text("NIF: " + items[0].nif, 10, 50);
+          // Adding NIF of the company
 
-        // Adding logo
+          doc.text("NIF: " + items[0].nif, 10, 50);
 
-        doc.setFontSize(10);
+          // Adding logo
 
-        var logo = items[0].logo;
+          doc.setFontSize(10);
 
-        var lines = doc.splitTextToSize(logo, pdfInMM - lMargin - rMargin);
+          var logo = items[0].logo;
 
-        doc.text(lMargin, 60, logo);
+          var lines = doc.splitTextToSize(logo, pdfInMM - lMargin - rMargin);
 
-        // Saving PDF
-        doc.save(pdfName + ".pdf");
+          doc.text(lMargin, 60, logo);
+
+          // Saving PDF
+          doc.save(pdfName + ".pdf");
       }
+      })
     },
     exportasRAW(items) {
       if (this.language == "en") {
-        var olawenas =
+        var text =
           "This will download files to your computer. Are you sure?";
       } else {
-        var olawenas =
+        var text =
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
       }
-      var continuar = window.confirm(olawenas);
+      
 
-      if (continuar) {
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
         var text =
           "{name:" +
           items[0].name +
@@ -335,9 +338,10 @@ export default {
           null
         );
         a.dispatchEvent(e);
+        }
+      })
       }
     }
-  }
 };
 </script>
 

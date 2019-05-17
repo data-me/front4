@@ -60,7 +60,7 @@ export default {
       var username = this.form.username;
       var password = this.form.password;
 
-      const baseURI = "https://api3-datame.herokuapp.com/api/v1/login";
+      const baseURI = "http://localhost:8000/api/v1/login";
       this.$http
         .post(baseURI, {
           username: username,
@@ -74,7 +74,7 @@ export default {
           this.showNavbar = false;
           let token = `JWT ${this.$cookies.get("token")}`;
           this.$http
-            .get("https://api3-datame.herokuapp.com/api/v1/whoami", {
+            .get("http://localhost:8000/api/v1/whoami", {
               headers: { Authorization: token }
             })
             .then(result => {
@@ -85,7 +85,7 @@ export default {
             });
         })
         .catch(() => {
-          alert(this.$t("login_error"));
+          this.$bvModal.msgBoxOk(this.$t("login_error"))
         });
     }
   }
