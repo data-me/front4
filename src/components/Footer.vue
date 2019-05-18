@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-    <b-navbar type="dark" variant="dark" fixed="bottom">
+    <b-navbar type="dark" variant="dark" :fixed="isSticky()">
         <b-nav-text><p class="text">© Copyright 2019 | {{$t('made_in_sevilla')}}</p></b-nav-text>
          <b-navbar-nav class="ml-auto">
             <b-nav-item href="https://data-me.github.io/"><p class="link" >{{$t("about_us")}}</p></b-nav-item>
@@ -17,6 +17,14 @@ export default {
   props: {
       fixed: String,
       sticky: Boolean
+  }, methods: {
+      isSticky(){
+          if (this.sticky == "yes"){
+              return "bottom"
+          } else {
+              return "none"
+          }
+      }
   }
 }
 </script>

@@ -9,25 +9,25 @@
       id="submited"
       hide-footer
       size="xl"
-      title="submited"
-    >
-      <template slot="modal-header">DataMe says:</template>
+      title="submited">
+
+      <template slot="modal-header">Info:</template>
       {{updatedMessage}}
-      <b-button class="mt-2" variant="success" block @click="moreFunctions">Close</b-button>
+      <b-button class="mt-2" variant="success" block @click="moreFunctions">{{$t('close')}}</b-button>
+
     </b-modal>
 
     <b-modal v-model="modalShow" ref="messages" id="messages" hide-footer size="xl" title="Erros">
-      <template slot="modal-header">Please check the errors below</template>
+      <template slot="modal-header">{{$t('error_msg')}}</template>
       <li v-bind:key="message.id" id="messagesError" v-for="message in this.messages">{{message}}</li>
       <template slot="modal-footer">
-        <button class="btn btn-primary">Save Changes</button>
+        <button class="btn btn-primary">{{$t('save_changes')}}</button>
       </template>
-      <b-button class="mt-3" variant="outline-danger" block @click="modalShow = false">Close</b-button>
+      <b-button class="mt-3" variant="outline-danger" block @click="modalShow = false">{{$t('close')}}</b-button>
     </b-modal>
 
-    <div id="Profile" v-if="ViewEdit">
-      <img :src="this.form.photo" class="profileImage">
-
+    <div id="profile" v-if="ViewEdit">
+      <img :src="this.form.photo" class="profileImage" >
       <div id="info">
         <b-card-text class="card-text">
           <label for="name">{{$t('name')}}:</label>
@@ -136,19 +136,18 @@
       </div>
     </div>
 
+    <br/>
+    <hr/>
+
     <div v-bind:key="item.id" id="cv_items" v-for="item in items">
-      <div>
-        <div>
-          <p class="display-3">
-            {{item.Section}}
+      <div class="cv_item_title">
+          <h2 class="section-title">{{item.Section}}</h2>
             <b-button
               size="sm"
               variant="danger"
-              class="mt-2"
+              class="mt-2 delete_button"
               @click="deleteSection(item.Section_Id, $t('confirm_delete_section'))"
             >{{$t('delete_section')}}</b-button>
-          </p>
-        </div>
       </div>
       <p></p>
       <div v-bind:key="item2.id" id="cv_items_sub" v-for="item2 in item.Items">
@@ -295,9 +294,6 @@
         @click="exportasRAW(user)"
       >{{$t('exportraw')}}</b-button>
     </b-modal>
-    <!--
-      <Footer/>
-    -->
   </div>
 </template>
 
@@ -716,8 +712,8 @@ export default {
 }
 
 #cv_items {
-  margin: 2em;
-  margin-right: 25%;
+  margin: 1rem;
+  margin-right: 1rem;
 }
 
 #cv_items_sub {
@@ -742,7 +738,7 @@ export default {
 }
 
 .profileImage {
-  width: 25%;
+  width: 25rem;
   vertical-align: bottom;
   max-width: 201px;
   max-height: 290px;
@@ -751,10 +747,14 @@ export default {
 #info {
   display: inline-table;
   margin-left: 1%;
+  margin-top: 2rem;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
-}
+  }
 #profile {
-  margin: 1%;
+  margin-left: 1em;
+}
+#EditProfile {
+  margin-left: 1em;
 }
 html {
   background-color: #ffffff;
@@ -773,5 +773,30 @@ html {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.section-title {
+  display: inline-block;
+}
+
+.cv_item_title {
+  display: table-cell;
+}
+.delete_button {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+@media all and (max-width: 699px) {
+  #profile {
+    display: flex;              /* establish flex container */
+    flex-direction: column;     /* stack flex items vertically */
+    align-items: center;        /* center items horizontally, in this case */
+  }
+  #EditProfile {
+    display: flex;              /* establish flex container */
+    flex-direction: column;     /* stack flex items vertically */
+    align-items: center;        /* center items horizontally, in this case */
+  }
 }
 </style>
