@@ -72,6 +72,7 @@ div.advertisement{
 
 .advertisement-image{
     height: 175px;
+    width: 100%;
 }
 span.ads_disclaimer{
     font: 10px/1 "Open Sans",Arial,sans-serif !important;
