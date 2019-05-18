@@ -72,7 +72,6 @@ div.advertisement{
 
 .advertisement-image{
     height: 175px;
-    width: 100%;
 }
 span.ads_disclaimer{
     font: 10px/1 "Open Sans",Arial,sans-serif !important;
@@ -84,5 +83,11 @@ div.advertisement input.close_add {
     top:0;
     left:0%;
 
+}
+@media all and (max-width: 699px) {
+    .advertisement-image{
+    height: 85%;
+    width: 85%;
+    }    
 }
 </style>
