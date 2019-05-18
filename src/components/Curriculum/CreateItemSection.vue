@@ -87,11 +87,11 @@ export default {
         this.messages = []
      var datePattern = new RegExp(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g);
       if (!this.item.datestart.match(datePattern)) {
-        alert("Please check the patter of the start date");
+        this.$bvModal.msgBoxOk(this.$t('error_start_date'))
       }
 
     if (this.item.datefinish != '' && !this.item.datefinish.match(datePattern)) {
-        alert("Please check the pattern of the finish date");
+        this.$bvModal.msgBoxOk(this.$t('error_end_date'))
       }
 
       if(this.messages.length > 0){

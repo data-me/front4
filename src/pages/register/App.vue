@@ -410,7 +410,7 @@ export default {
             });
         })
         .catch(err => {
-          alert("Oops, an error ocurred trying to sign in.");
+          this.$bvModal.msgBoxOk(this.$t('error_signin'))
         });
       if (this.selected == "DataScientist") {
         this.$router.push({ path: "/my_cv" });

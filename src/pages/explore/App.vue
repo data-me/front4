@@ -339,7 +339,8 @@ export default {
             .get(url_guarda_pagos, { headers: { Authorization: token } })
             .then(result => {
               // El pago se ha guardado
-              alert(result.data.message);
+              //alert(result.data.message);
+              this.$bvModal.msgBoxOk(this.$t('successful_payment'))
               // Hago la llamada para obtener las offers con la nueva offer dentro
               var token = "JWT " + this.$cookies.get("token");
               this.$http

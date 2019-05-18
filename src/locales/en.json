@@ -216,5 +216,9 @@
   "updated_offer":"Successfully updated your offer.",
   "updated_apply":"Successfully updated your application.",
   "successful_del_offer":"Successfully deleted your offer.",
-  "successful_acc_apply": "Successfully accepeted the application."
+  "successful_acc_apply": "Successfully accepeted the application.",
+  "error_start_date":"Please introduce a valid start date following the pattern.",
+  "error_end_date":"Please introduce a valid start date following the pattern.",
+  "successful_payment": "Successfully made payment.",
+  "error_signin": "Oops, an error ocurred trying to sign in."
 }

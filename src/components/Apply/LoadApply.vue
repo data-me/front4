@@ -179,10 +179,10 @@ Vue.use(VueRouter)
               var token = 'JWT ' + this.$cookies.get('token')
               this.$http.delete('http://localhost:8000/api/v2/application/' + applicationId, { headers: { Authorization: token }}).then((result) => {
                   if (result.data.code == '200') {
-                    alert(this.$t('delete_app_success'))
+                    this.$bvModal.msgBoxOk(this.$t('delete_app_success'))
                   }
                   if (result.data.code == '401') {
-                    alert(this.$t('delete_app_not_allowed'))
+                    this.$bvModal.msgBoxOk(this.$t('delete_app_not_allowed'))
                   }
                   location.reload()
               })
@@ -204,10 +204,10 @@ Vue.use(VueRouter)
         { Authorization: token }
         }).then((result) => {
             if (result.data.code == '200') {
-              alert(this.$t('edit_app_success'))
+              this.$bvModal.msgBoxOk(this.$t('edit_app_success'))
             }
             if (result.data.code == '401') {
-              alert(this.$t('edit_app_not_allowed'))
+              this.$bvModal.msgBoxOk(this.$t('edit_app_not_allowed'))
             }
             location.reload()
         })

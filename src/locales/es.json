@@ -216,5 +216,9 @@
   "updated_apply":"Se ha actualizado correctamente su propuesta.",
   "updated_offer":"Se ha actualizado correctamente su oferta.",
   "successful_del_offer":"Se ha eliminado de forma satisfactoria su oferta.",
-  "successful_acc_apply": "La propuesta se ha aceptado correctamente."
+  "successful_acc_apply": "La propuesta se ha aceptado correctamente.",
+  "error_start_date":"Por favor introduzca una fecha de comienzo siguiendo el patrón.",
+  "error_end_date":"Por favor introduzca una fecha de finalización siguiendo el patrón.",
+  "successful_payment": "Pago realizado con éxito.",
+  "error_signin": "Ha ocurrido un problema intentando iniciar sesión."
 }

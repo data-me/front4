@@ -224,7 +224,7 @@ export default {
         .then(response => {
           this.forceFileDownload(response);
         })
-        .catch(e => alert("error occured" + e));
+        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed')));
     },
     changeStatus(id) {
       this.errorMessage = "";
