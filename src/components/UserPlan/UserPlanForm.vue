@@ -15,14 +15,13 @@
                 id="nMonths"
                 v-model="userPlanForm.nMonths"
                 required
-                type="number"
-                :state="this.userPlanForm.nMonths.length> 0 && this.userPlanForm.nMonths>0 && parseInt(this.userPlanForm.nMonths) <= parseInt(this.maxMonthsToExtend)"
+                type="number"                :state="this.userPlanForm.nMonths.length> 0 && this.userPlanForm.nMonths>0 && parseInt(this.userPlanForm.nMonths) <= parseInt(this.maxMonthsToExtend)"
             />
             <b-form-invalid-feedback id="input-live-feedback">
               {{$t('user_plan_nmonths_warning')}}
             </b-form-invalid-feedback>
             <br/>
-            <b-button @click="modaluserPlanFormShow = !modaluserPlanFormShow" class="send-button" type="submit" variant="primary">{{$t('send')}}</b-button>
+            <b-button @click="modaluserPlanFormShow = !modaluserPlanFormShow" :disabled=isDisabled class="send-button" type="submit" variant="primary">{{$t('send')}}</b-button>
           </b-col>
         </b-container>
       </b-form>
@@ -45,7 +44,13 @@
         redirect_url : '',
       }
     },
+    computed:{
+      isDisabled(){
+        return ! (this.userPlanForm.nMonths.length> 0 && this.userPlanForm.nMonths>0 && parseInt(this.userPlanForm.nMonths) <= parseInt(this.maxMonthsToExtend));
+      }
+    },
     methods: {
+    
       onSubmit(evt) {
         evt.preventDefault()
         var token = 'JWT ' + this.$cookies.get('token')
