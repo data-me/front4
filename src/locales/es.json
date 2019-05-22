@@ -147,6 +147,7 @@
   "confirm_delete_section": "¿Está seguro de que desea eliminar la sección de su curriculum?",
   "confirm_delete_item": "¿Está seguro de que desea eliminar el elemento de su curriculum?",
   "confirm_delete_offer": "¿Está seguro de que desea eliminar la oferta?",
+  "confirm_delete_user": "¿Está seguro de que desea eliminar el usuario?",
   "confirm_accept_application": "¿Está seguro de que desea aceptar la solicitud a la oferta?",
   "status": "Estado",
   "date": "Fecha",
@@ -220,5 +221,6 @@
   "error_start_date":"Por favor introduzca una fecha de comienzo siguiendo el patrón.",
   "error_end_date":"Por favor introduzca una fecha de finalización siguiendo el patrón.",
   "successful_payment": "Pago realizado con éxito.",
-  "error_signin": "Ha ocurrido un problema intentando iniciar sesión."
+  "error_signin": "Ha ocurrido un problema intentando iniciar sesión.",
+  "delete_user": "Eliminar usuario"
 }

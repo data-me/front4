@@ -58,6 +58,10 @@
         <b-collapse :id="'accordion-'+index" accordion="my-accordion" role="tabpanel">
           <b-card-body>
             <b-card-text>
+              <span class="font-weight-bold">{{$t('Company')}}:</span>
+              {{item.company_id}}
+            </b-card-text>
+            <b-card-text>
               <span class="font-weight-bold">{{$t('description')}}:</span>
               {{item.description}}
             </b-card-text>

@@ -470,7 +470,7 @@ export default {
       }
       if (this.formDiobrando.date_finish.length != 0) {
           var dateEnd = new Date(this.formDiobrando.date_finish)
-    
+
         if (dateEnd > now){
              if (this.language == "en") {
           this.messages.push("The finish date must be past");
@@ -489,7 +489,7 @@ export default {
 
       }
 
-      
+
         if (dateStart > now){
              if (this.language == "en") {
           this.messages.push("Starting date must be past");
@@ -547,7 +547,6 @@ export default {
     },
     deleteSection(section_id, text) {
       var token = "JWT " + this.$cookies.get("token");
-      var confirm = window.confirm(text);
       this.$bvModal.msgBoxConfirm(text).then(value => {
         if(value === true){
           this.$http.delete(
@@ -686,7 +685,7 @@ export default {
           null
         );
         a.dispatchEvent(e);
-      } 
+      }
     })
     }
   }

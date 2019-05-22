@@ -147,6 +147,7 @@
   "confirm_delete_section": "You are going to delete a section of your curriculum, are you sure?",
   "confirm_delete_item": "You are going to delete an item of your curriculum, are you sure?",
   "confirm_delete_offer": "You are going to delete an offer, are you sure?",
+  "confirm_delete_user": "You are going to delete an user, are you sure?",
   "confirm_accept_application": "You are going to accept an application to an offer, are you sure?",
   "status": "Status",
   "date": "Date",
@@ -211,7 +212,7 @@
   "companies" : "Companies",
   "data_scientists": "Data Scientists",
   "submited_notification":"Successfully sent the message",
-  "fix_errors":"Please fix errors found in your form.", 
+  "fix_errors":"Please fix errors found in your form.",
   "successful_apply":"Successfully created a new application.",
   "updated_offer":"Successfully updated your offer.",
   "updated_apply":"Successfully updated your application.",
@@ -220,5 +221,6 @@
   "error_start_date":"Please introduce a valid start date following the pattern.",
   "error_end_date":"Please introduce a valid start date following the pattern.",
   "successful_payment": "Successfully made payment.",
-  "error_signin": "Oops, an error ocurred trying to sign in."
+  "error_signin": "Oops, an error ocurred trying to sign in.",
+  "delete_user": "Delete user"
 }
