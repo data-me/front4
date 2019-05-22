@@ -102,7 +102,6 @@
       </b-card>
     </div>
 
-    <Footer/>
   </div>
 </template>
 

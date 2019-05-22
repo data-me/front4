@@ -58,7 +58,6 @@
         </b-collapse>
       </b-card>
     </div>
-    <Footer/>
   </div>
 </template>
 <script>

@@ -115,7 +115,6 @@
        <h2 id="NadaQueMostrar"> {{$t('nothing_to_show')}} </h2>
     </div>
 
-    <Footer/>
   </div>
 </template>
 

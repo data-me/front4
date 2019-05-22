@@ -247,7 +247,6 @@
       <br>
     </b-form>
 
-    <Footer/>
   </div>
 </template>
 

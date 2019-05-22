@@ -155,7 +155,7 @@
   "apply_edit": "¿Está seguro de que desea editar la solicitud con estos nuevos datos?",
   "make_submition": "Hacer propuesta",
   "accept": "Aceptar",
-  "show_ds": "Mostrar al científico de datos",
+  "show_ds": "Ver perfil",
   "make_review_ds": "Haz una critica del cientifico de datos",
   "make_review_com": "Haz una critica de la empresa",
   "Reviewer": "Revisor",
@@ -209,5 +209,6 @@
   "upgrade": "Suscribir",
   "manage_users": "Gestionar usuarios",
   "companies" : "Empresas",
-  "data_scientists": "Cientificos de Datos"
+  "data_scientists": "Cientificos de Datos",
+  "sec_notification_title": "Notificación de brecha de seguridad lanzada"
 }

@@ -155,7 +155,7 @@
   "apply_edit": "You are going to replace the application with this new information, are you sure?",
   "make_submition": "Make proposal",
   "accept": "Accept",
-  "show_ds": "Show Data Scientist",
+  "show_ds": "Show profile",
   "make_review_ds": "Review Data Scientist",
   "Reviewer": "Reviewer",
   "Reviewed": "Reviewed",
@@ -209,5 +209,6 @@
   "upgrade": "Upgrade",
   "manage_users": "Manage Users",
   "companies" : "Companies",
-  "data_scientists": "Data Scientists"
+  "data_scientists": "Data Scientists",
+  "sec_notification_title": "Security breach notified"
 }
