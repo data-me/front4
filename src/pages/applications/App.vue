@@ -89,6 +89,10 @@
       >
         <div id="info">
           <b-card-text class="card-text">
+            <label for="username">{{$t('username')}}:</label>
+            {{this.username}}
+          </b-card-text>
+          <b-card-text class="card-text">
             <label for="name">{{$t('name')}}:</label>
             {{this.name}}
           </b-card-text>
@@ -153,6 +157,7 @@ export default {
       },
       user: "",
       name: "",
+      username: "",
       surname: "",
       email: "",
       phone: "",
@@ -225,6 +230,7 @@ export default {
           this.phone = this.user.phone;
           this.photo = this.user.photo;
           this.address = this.user.address;
+          this.username = this.user.user__username;
         });
       this.$http
         .get(
