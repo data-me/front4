@@ -156,7 +156,7 @@
   "apply_edit": "¿Está seguro de que desea editar la solicitud con estos nuevos datos?",
   "make_submition": "Hacer propuesta",
   "accept": "Aceptar",
-  "show_ds": "Mostrar al científico de datos",
+  "show_ds": "Ver perfil",
   "make_review_ds": "Haz una critica del cientifico de datos",
   "make_review_com": "Haz una critica de la empresa",
   "Reviewer": "Revisor",
@@ -222,5 +222,7 @@
   "error_end_date":"Por favor introduzca una fecha de finalización siguiendo el patrón.",
   "successful_payment": "Pago realizado con éxito.",
   "error_signin": "Ha ocurrido un problema intentando iniciar sesión.",
-  "delete_user": "Eliminar usuario"
+  "delete_user": "Eliminar usuario",
+  "data_scientists": "Cientificos de Datos",
+  "sec_notification_title": "Notificación de brecha de seguridad lanzada"
 }

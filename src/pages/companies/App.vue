@@ -40,9 +40,8 @@
 
         <div>
           <b-button
-            style="float: right; width: 15%; margin-right: 5px"
             v-if="isCompany"
-            class="mt-1"
+            class="button"
             variant="success"
             block
             @click="toggleEditProfile"
@@ -50,9 +49,8 @@
           >{{$t("edit")}}</b-button>
 
           <b-button
-            style="float: right; width: 15%; margin-right: 5px"
             v-if="isCompany"
-            class="mt-1"
+            class="button"
             variant="primary"
             block
             v-b-modal.export
@@ -126,7 +124,6 @@
       >{{$t('exportraw')}}</b-button>
     </b-modal>
 
-    <Footer/>
   </div>
 </template>
 
@@ -378,4 +375,5 @@ export default {
 html {
   background-color: #ffffff;
 }
+
 </style>

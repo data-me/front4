@@ -265,7 +265,6 @@
         </b-form>
       </b-modal>
     </div>
-    <Footer/>
   </div>
 </template>
 

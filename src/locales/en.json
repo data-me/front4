@@ -156,7 +156,7 @@
   "apply_edit": "You are going to replace the application with this new information, are you sure?",
   "make_submition": "Make proposal",
   "accept": "Accept",
-  "show_ds": "Show Data Scientist",
+  "show_ds": "Show profile",
   "make_review_ds": "Review Data Scientist",
   "Reviewer": "Reviewer",
   "Reviewed": "Reviewed",
@@ -222,5 +222,7 @@
   "error_end_date":"Please introduce a valid start date following the pattern.",
   "successful_payment": "Successfully made payment.",
   "error_signin": "Oops, an error ocurred trying to sign in.",
-  "delete_user": "Delete user"
+  "delete_user": "Delete user",
+  "data_scientists": "Data Scientists",
+  "sec_notification_title": "Security breach notified"
 }

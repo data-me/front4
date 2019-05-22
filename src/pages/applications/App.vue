@@ -109,8 +109,9 @@
             {{this.address}}
           </b-card-text>
         </div>
+        <hr/>
         <div id="cv_items_5" v-for="cvitem in dss">
-          <p class="display-3">{{cvitem.Section}}</p>
+          <h4>{{cvitem.Section}}</h4>
           <div id="cv_items_sub" v-for="item2 in cvitem.Items">
             <b-card :title="item2.name" :sub-title="item2.description">
               <b-card-text>{{item2.date_start}} - {{item2.date_finish}}</b-card-text>
@@ -120,7 +121,6 @@
       </b-modal>
     </div>
 
-    <Footer/>
   </div>
 </template>
 

@@ -8,10 +8,11 @@
       <h1 class = 'title'>{{$t('Reviews_of_companies')}}</h1>
       <div id="ranking" v-bind:key="item.id" v-for="(item) in rankingCompanies">
               <b-card-body>
-                  <div class="card text-white bg-info mb-3">
-                    <h2 class="card-header">{{$t('Company')}}: {{item.reviewed_name}} <br></h2>
-                    <h2 class="card-header" style ="background-color:#337DFF;">{{$t('Average')}}: {{item.average}} <br></h2>
-                    <h2 class="card-header">{{$t('LastReview')}}: {{item.comments}} <br></h2>
+                  <div class="card bg-light mb-3">
+                    <h2 class="card-header">{{item.reviewed_name}} <br></h2>
+                    <h2 class="card-header text-white bg-info">{{$t('Average')}}: {{item.average}} <br></h2>
+                    <h2 class="card-header">{{$t('LastReview')}}:<h4 style="color:#8c8c8c;">{{item.comments}}</h4></h2>
+                    
                 </div>
 
               </b-card-body>
@@ -20,10 +21,10 @@
       <h1 class = 'title'>{{$t('Reviews_of_datascientists')}}</h1>
       <div id="ranking" v-bind:key="item.id" v-for="(item) in rankingData">
               <b-card-body>
-                  <div class="card text-white bg-info mb-3">
-                    <h2 class="card-header">{{$t('DataScientist')}}: {{item.reviewed_name}} <br></h2>
-                    <h2 class="card-header" style ="background-color:#337DFF;">{{$t('Average')}}: {{item.average}} <br></h2>
-                    <h2 class="card-header">{{$t('LastReview')}}: {{item.comments}} <br></h2>
+                  <div class="card bg-light mb-3">
+                    <h2 class="card-header">{{item.reviewed_name}} <br></h2>
+                    <h2 class="card-header text-white bg-info">{{$t('Average')}}: {{item.average}} <br></h2>
+                    <h2 class="card-header">{{$t('LastReview')}}<h4 style="color:#707070;">{{item.comments}}</h4></h2>
                 </div>
 
               </b-card-body>
@@ -33,14 +34,13 @@
 
 
           <!-- Empty items -->
-    <div v-if="itemsCargados1 == true && itemsCargados2 == true && (items == none || items.length == 0)">
+    <div v-if="!(itemsCargados1 && itemsCargados2)">
        <h2 id="NadaQueMostrar"> {{$t('nothing_to_show')}} </h2>
     </div>
 
 
 
 
-    <Footer/>
   </div>
 </template>
 

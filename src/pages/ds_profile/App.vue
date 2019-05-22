@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar/>
     <div id="cv_items_5" v-for="item in items" :key="item">
-      <p class="display-3">{{item.Section}}</p>
+      <h4>{{item.Section}}</h4>
       <p></p>
       <div id="cv_items_sub" v-for="item2 in item.Items" :key="item2">
         <b-card :title="item2.name" :sub-title="item2.description">
@@ -10,7 +10,6 @@
         </b-card>
       </div>
     </div>
-    <Footer/>
   </div>
 </template>
 

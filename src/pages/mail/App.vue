@@ -32,7 +32,7 @@
     </b-modal>
 
     <div class="create-message">
-      <b-button id="create-message" v-b-modal.modalxl variant="outline-primary">
+      <b-button id="create-message" v-b-modal.modalxl variant="outline-info">
         <font-awesome-icon style="color:#14AABF" :icon="['fas','envelope']"/>
         {{$t('create_message')}}
         </b-button>
@@ -40,6 +40,7 @@
     <!-- -->
 
     <!-- Create new notification button -->
+    <div>
     <b-modal
       class="registered"
       v-model="submited_notification"
@@ -63,10 +64,11 @@
 
         <b-button class="mt-2" variant="success" block @click="reloadPage">{{$t('close')}}</b-button>
     </b-modal>
+    </div>
 
     <div v-if="user_type === 'admin'" class="create-notification">
-      <b-button id="create-notification" v-b-modal.modalxl2 variant="outline-primary">
-        <font-awesome-icon style="color:#14AABF" :icon="['fas','bell']"/>
+      <b-button id="create-notification" v-b-modal.submited_notification style="color:#b9bc0b;background-color:white;border-color:#b9bc0b;" >
+        <font-awesome-icon style="color:#b9bc0b" :icon="['fas','bell']"/>
         {{$t('create_notification')}}
       </b-button>
     </div>
@@ -77,7 +79,7 @@
 
 
     <div id="titlepage">
-      <h1>{{$t('received_messages')}}</h1>
+      <h2>{{$t('received_messages')}}</h2>
     </div>
     <div :key="item.id" id="messages" v-for="item in items">
       <div v-if="item.isAlert">
@@ -92,12 +94,12 @@
       </div>
 
       <div v-else>
-        <b-card border bg-variant="info" :title="item.title">
+        <b-card border bg-variant="light" :title="item.title">
           <b-card-text>{{item.body}}</b-card-text>
           <b-card-text
             class="small text-muted"
           >{{item.moment.slice(0,10)}} {{item.moment.slice(11, 16)}}</b-card-text>
-          <font-awesome-icon style="color:white" pull="right" :icon="['fas','comments']"/>
+          <font-awesome-icon style="color:black" pull="right" :icon="['fas','comments']"/>
         </b-card>
       </div>
     </div>
@@ -156,8 +158,11 @@
         </b-form>
       </b-modal>
     </div>
-    
-    <Footer/>
+
+  <div v-if="items.length == 0">
+    <p class="no_msg_alert">{{$t('nothing_to_show')}}</p>
+  </div>
+
   </div>
 </template>
 
@@ -438,5 +443,10 @@ html {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.no_msg_alert {
+  color: gray;
+  text-align: center;
 }
 </style>

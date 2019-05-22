@@ -9,7 +9,6 @@
       </b-card>
     <user-plan-form></user-plan-form>
     <receive-paypal-user-plan-payment/>
-    <Footer/>
   </div>
 </template>
 
