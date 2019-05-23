@@ -22,7 +22,8 @@
               {{$t('user_plan_nmonths_warning')}}
             </b-form-invalid-feedback>
             <br/>
-            <b-button @click="modaluserPlanFormShow = !modaluserPlanFormShow" class="send-button" type="submit" variant="primary">{{$t('send')}}</b-button>
+            <b-button @click="modaluserPlanFormShow = !modaluserPlanFormShow" class="send-button" type="submit" variant="primary" v-if="this.userPlanForm.nMonths.length> 0 && this.userPlanForm.nMonths>0 && parseInt(this.userPlanForm.nMonths) <= parseInt(this.maxMonthsToExtend)">{{$t('send')}}</b-button>
+            <b-button @click="modaluserPlanFormShow = !modaluserPlanFormShow" class="send-button" type="submit" variant="primary" disabled v-if="!(this.userPlanForm.nMonths.length> 0 && this.userPlanForm.nMonths>0 && parseInt(this.userPlanForm.nMonths) <= parseInt(this.maxMonthsToExtend))">{{$t('send')}}</b-button>
           </b-col>
         </b-container>
       </b-form>
