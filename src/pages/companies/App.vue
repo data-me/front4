@@ -384,5 +384,4 @@ export default {
 html {
   background-color: #ffffff;
 }
-
 </style>

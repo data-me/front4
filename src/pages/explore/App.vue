@@ -96,7 +96,7 @@
               >{{$t('apply')}}</b-link>
             </div>
 
-            <div id="deleteoffer" v-if="user_type !== 'ds' && applications.length == 0">
+            <div id="deleteoffer" v-if="user_type !== 'ds' && item.num_applicantions == 0">
               <b-button
                 style="float: right; margin: 5px; margin-right:-5px"
                 variant="danger"
@@ -104,7 +104,7 @@
                 @click="deleteOffer(item.id, $t('confirm_delete_offer'))"
               >{{$t('delete_offer')}}</b-button>
             </div>
-            <div id="editOffer" v-if="(user_type === 'com' && applications.length == 0)">
+            <div id="editOffer" v-if="(user_type === 'com' && item.num_applicantions == 0)">
               <b-button
                 style="float: right; margin: 5px"
                 class="card-link"
@@ -146,7 +146,7 @@
           type="text"
           id="description"
           v-model="formEdit.description"
-          :state="formEdit.description.length > 0"
+          :state="formEdit.description.length >= 10"
           aria-describedby="descriptionHelpBlock"
         />
         <b-form-text id="descriptionHelpBlock">{{$t('description_offer_placeholder')}}</b-form-text>
@@ -186,7 +186,7 @@
             type="number"
             id="price"
             v-model="form.price_offered"
-            :state="! form.price_offered == ''"
+            :state="! form.price_offered == '' && form.price_offered > 0"
             aria-describedby="priceHelpBlock"
           />
           <b-form-text id="priceHelpBlock">{{$t('price_offered_placeholder')}}</b-form-text>
@@ -456,8 +456,14 @@ export default {
       if (this.form.description.length == 0) {
         this.messages.push(this.$t('description_req'));
       }
+      else if (this.form.description.length < 10){
+        this.messages.push("Description must contain at least 10 characters");
+      }
       if (this.form.price_offered == null) {
         this.messages.push(this.$t('price_req'));
+      }
+      else if (this.form.price_offered < 0) {
+        this.messages.push("Price must be positive");
       }
       if (this.form.limit_time == null) {
         this.messages.push(this.$t('limit_req'));
@@ -576,6 +582,19 @@ export default {
     },
     updateOffer() {
       var token = "JWT " + this.$cookies.get("token");
+      this.messages = [];
+      if (this.formEdit.title.length == 0) {
+        this.messages.push("Title is required");
+      }
+      if (this.formEdit.description.length == 0) {
+        this.messages.push("Description is required");
+      }
+      else if (this.formEdit.description.length < 10){
+        this.messages.push("Description must contain at least 10 characters");
+      }
+      if (this.messages.length > 0) {
+        this.modalShow = true;
+      } else {
       const formData = new FormData();
       formData.append("title", this.formEdit.title);
       formData.append("description", this.formEdit.description);
@@ -592,6 +611,7 @@ export default {
           })
           window.location.href = "/explore.html";
         });
+    }
     }
   }
 };

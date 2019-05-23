@@ -2,7 +2,11 @@
   <div id="app">
     <Navbar/>
     <div id="cv_items_5" v-for="item in items" :key="item">
+<<<<<<< HEAD
+      <p class="display-3">{{item.Section}}</p>
+=======
       <h4>{{item.Section}}</h4>
+>>>>>>> 9169642f25e294f37b23c09bb404f9002885574b
       <p></p>
       <div id="cv_items_sub" v-for="item2 in item.Items" :key="item2">
         <b-card :title="item2.name" :sub-title="item2.description">
@@ -10,6 +14,10 @@
         </b-card>
       </div>
     </div>
+<<<<<<< HEAD
+    <Footer/>
+=======
+>>>>>>> 9169642f25e294f37b23c09bb404f9002885574b
   </div>
 </template>
 

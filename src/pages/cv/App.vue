@@ -475,7 +475,6 @@ export default {
       }
       if (this.formDiobrando.date_finish.length != 0) {
           var dateEnd = new Date(this.formDiobrando.date_finish)
-
         if (dateEnd > now){
              if (this.language == "en") {
           this.messages.push("The finish date must be past");
@@ -493,7 +492,6 @@ export default {
         }
 
       }
-
 
         if (dateStart > now){
              if (this.language == "en") {

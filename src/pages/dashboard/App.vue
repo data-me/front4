@@ -66,8 +66,23 @@
           <h1 class="card-header">{{$t('number_messages')}}</h1>
           <h2 class="card-body">{{messages.length}}</h2>
         </div>
-      </div>
+        <br>
+       <br>  
+            <GChart
+            type="ColumnChart"
+            :data="chartData1"
+            :options="chartOptions"
+          />
+
+       <br>
+       <br>  
+            <GChart
+            type="ColumnChart"
+            :data="chartData2"
+            :options="chartOptions"
+          />
     </div>
+  </div>
   </div>
 </template>
 
@@ -90,6 +105,13 @@ export default {
       applicationsAccepted: [],
       submitions: [],
       messages: [],
+       chartData1: [ ['Type of User', 'Number of users'] ],
+       chartData2: [ ['Offers/Applications', 'Amount'] ],
+      chartOptions: {
+        chart: {
+          title: 'Number of DS vs C'
+        }
+      },
 
       user_type: this.$cookies.get("user_type")
     };
@@ -110,6 +132,7 @@ export default {
         headers: { Authorization: token }
       })
       .then(result => {
+        this.chartData2.push(['Offers',result.data.length])
         this.offers = result.data;
       });
 
@@ -118,6 +141,7 @@ export default {
         headers: { Authorization: token }
       })
       .then(result => {
+        this.chartData1.push(['DS',result.data.length])
         this.users = result.data;
       });
 
@@ -126,6 +150,7 @@ export default {
         headers: { Authorization: token }
       })
       .then(result => {
+        this.chartData1.push(['C',result.data.length])
         this.companies = result.data;
       });
 
@@ -134,6 +159,7 @@ export default {
         headers: { Authorization: token }
       })
       .then(result => {
+        this.chartData2.push(['Applications',result.data.length])
         this.applications = result.data;
       });
     this.$http
@@ -141,6 +167,7 @@ export default {
         headers: { Authorization: token }
       })
       .then(result => {
+        this.chartData2.push(['Applications accepted',result.data.length])
         this.applicationsAccepted = result.data;
       });
     this.$http
