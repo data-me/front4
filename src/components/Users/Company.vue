@@ -17,8 +17,8 @@
         variant="danger"
         class="mt-2"
         block
-        @click="deleteUser(company.user_id)"
-      >Delete company</b-button>
+        @click="deleteUser(company.user_id, $t('confirm_delete_user'))"
+      >{{$t('delete_user')}}</b-button>
     </div>
   </b-card>
 </template>
@@ -31,17 +31,21 @@ export default {
   },
   props: ["company"],
   methods: {
-    deleteUser(user_id) {
+    deleteUser(user_id, text) {
       var token = "JWT " + this.$cookies.get("token");
       const formData = new FormData();
       formData.append("user_id", user_id);
-      this.$http
-        .post(" http://localhost:8000/api/v2/delete_user", formData, {
-          headers: { Authorization: token }
-        })
-        .then(result => {
-          location.reload();
-        });
+      this.$bvModal.msgBoxConfirm(text).then(value => {
+        if(value === true){
+          this.$http
+            .post(" http://localhost:8000/api/v2/delete_user", formData, {
+              headers: { Authorization: token }
+            })
+            .then(result => {
+              location.reload();
+            });
+        }
+      })
     }
   }
 };

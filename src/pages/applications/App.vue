@@ -89,6 +89,10 @@
       >
         <div id="info">
           <b-card-text class="card-text">
+            <label for="username">{{$t('username')}}:</label>
+            {{this.username}}
+          </b-card-text>
+          <b-card-text class="card-text">
             <label for="name">{{$t('name')}}:</label>
             {{this.name}}
           </b-card-text>
@@ -109,8 +113,9 @@
             {{this.address}}
           </b-card-text>
         </div>
+        <hr/>
         <div id="cv_items_5" v-for="cvitem in dss">
-          <p class="display-3">{{cvitem.Section}}</p>
+          <h4>{{cvitem.Section}}</h4>
           <div id="cv_items_sub" v-for="item2 in cvitem.Items">
             <b-card :title="item2.name" :sub-title="item2.description">
               <b-card-text>{{item2.date_start}} - {{item2.date_finish}}</b-card-text>
@@ -120,7 +125,6 @@
       </b-modal>
     </div>
 
-    <Footer/>
   </div>
 </template>
 
@@ -153,6 +157,7 @@ export default {
       },
       user: "",
       name: "",
+      username: "",
       surname: "",
       email: "",
       phone: "",
@@ -225,6 +230,7 @@ export default {
           this.phone = this.user.phone;
           this.photo = this.user.photo;
           this.address = this.user.address;
+          this.username = this.user.user__username;
         });
       this.$http
         .get(

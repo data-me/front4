@@ -49,7 +49,7 @@
     <div id="offers" v-bind:key="item.id" v-for="(item, index) in items">
       <b-card no-body>
         <b-card-header header-tag="header" class="p-3" role="tab">
-          <b-button block v-b-toggle="'accordion-' + index" variant="outline-primary">
+          <b-button @click="getCompany(item.company_id)" block v-b-toggle="'accordion-' + index" variant="outline-primary" >
               <div id="OfferTittle" style="Float: 'left'">{{item.title}} </div>
               <div id="OfferNOfApplications">{{item.num_applicantions}} {{$t('num_applicantions')}}</div>
               <div id="OfferPrice">{{item.price_offered + '€'}} </div>
@@ -57,6 +57,10 @@
         </b-card-header>
         <b-collapse :id="'accordion-'+index" accordion="my-accordion" role="tabpanel">
           <b-card-body>
+            <b-card-text>
+              <span class="font-weight-bold">{{$t('Company')}}:</span>
+              {{com.name}} ({{com.user__username}})
+            </b-card-text>
             <b-card-text>
               <span class="font-weight-bold">{{$t('description')}}:</span>
               {{item.description}}
@@ -261,7 +265,6 @@
         </b-form>
       </b-modal>
     </div>
-    <Footer/>
   </div>
 </template>
 
@@ -305,6 +308,9 @@ export default {
         title: "",
         description: ""
       },
+      com: "",
+      comName: "",
+      comUsername: "",
       offerId: "",
       messages: [],
       modalShow: "false",
@@ -417,6 +423,18 @@ export default {
     },
     saveId: function(idOffer) {
       this.offerId = idOffer;
+    },
+    getCompany: function(companyId) {
+      var token = "JWT " + this.$cookies.get("token");
+      this.$http
+        .get("http://localhost:8000/api/v1/company?companyId=" + companyId, {
+          headers: { Authorization: token }
+        })
+        .then(result => {
+          this.com = result.data[0];
+          this.comName = this.com.name;
+          this.comUsername = this.com.user__username;
+        });
     },
     createOffer() {
       var token = "JWT " + this.$cookies.get("token");
