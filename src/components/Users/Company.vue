@@ -1,11 +1,11 @@
 <template>
   <b-card class="company-bcard" :title="'Company ID: ' + company.id">
     <b-card-text class="card-text">
-      <label for="address">Name:</label>
+      <label for="address">{{$t('name')}}:</label>
       {{company.name}}
     </b-card-text>
     <b-card-text class="card-text">
-      <label for="address">Description:</label>
+      <label for="address">{{$t('description')}}:</label>
       {{company.description}}
     </b-card-text>
     <b-card-text class="card-text">
@@ -35,7 +35,10 @@ export default {
       var token = "JWT " + this.$cookies.get("token");
       const formData = new FormData();
       formData.append("user_id", user_id);
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text), {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }.then(value => {
         if(value === true){
           this.$http
             .post(" http://localhost:8000/api/v2/delete_user", formData, {

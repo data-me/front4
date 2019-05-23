@@ -3,7 +3,7 @@
     <Navbar/>
     <!-- ////// -->
     <b-modal v-model="modalShow" ref="messages" id="messages" hide-footer size="xl" title="Erros">
-      <template slot="modal-header">Please check the errors below</template>
+      <template slot="modal-header">{{$t('check_errors')}}</template>
       <li id="messagesError" v-for="message in this.messages">{{message}}</li>
       <template slot="modal-footer">
         <button class="btn btn-primary">Save Changes</button>
@@ -346,7 +346,9 @@ export default {
             .then(result => {
               // El pago se ha guardado
               //alert(result.data.message);
-              this.$bvModal.msgBoxOk(this.$t('successful_payment'))
+              this.$bvModal.msgBoxOk(this.$t('successful_payment'), {
+                okTitle=this.$t('accept')
+              })
               // Hago la llamada para obtener las offers con la nueva offer dentro
               var token = "JWT " + this.$cookies.get("token");
               this.$http
@@ -396,7 +398,10 @@ export default {
   },
   methods: {
     toggleCreateApply(text) {
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text,  {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
         if(value === true){
           var token = "JWT " + this.$cookies.get("token");
           const formApply = new FormData();
@@ -404,7 +409,9 @@ export default {
             this.formApply.title.length < 5 ||
             this.formApply.description.length < 10
           ) {
-            this.$bvModal.msgBoxOk(this.$t("fix_errors"))
+            this.$bvModal.msgBoxOk(this.$t("fix_errors"),  {
+              okTitle=this.$t('accept')
+            })
           } else {
             formApply.append("title", this.formApply.title);
             formApply.append("description", this.formApply.description);
@@ -414,7 +421,9 @@ export default {
                 headers: { Authorization: token }
               })
               .then(result => {
-                this.$bvModal.msgBoxOk(this.$t("successful_apply"))
+                this.$bvModal.msgBoxOk(this.$t("successful_apply"), {
+                  okTitle=this.$t('accept')
+                })
                 location.reload()
               })
             }
@@ -442,36 +451,36 @@ export default {
 
       this.messages = [];
       if (this.form.title.length == 0) {
-        this.messages.push("Title is required");
+        this.messages.push(this.$t('title_req'));
       }
       if (this.form.description.length == 0) {
-        this.messages.push("Description is required");
+        this.messages.push(this.$t('description_req'));
       }
       if (this.form.price_offered == null) {
-        this.messages.push("Price is required");
+        this.messages.push(this.$t('price_req'));
       }
       if (this.form.limit_time == null) {
-        this.messages.push("Limit time is required");
+        this.messages.push(this.$t('limit_req'));
       }
       if (this.form.files.length == null) {
-        this.messages.push("File is required");
+        this.messages.push(this.$t('file_req'));
       }
       if (this.form.contract.length == 0) {
-        this.messages.push("Contract is required");
+        this.messages.push(this.$t('contract_req'));
       }
       if (this.form.limit_time == null) {
-        this.messages.push("Limit date is required");
+        this.messages.push(this.$t('limit_req'));
       } else {
         var datePattern = new RegExp(
           /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/g
         );
         if (!this.form.limit_time.match(datePattern)) {
-          this.messages.push("Please check the pattern of limit date");
+          this.messages.push(this.$t('check_pattern'));
         } else {
           let date = new Date(this.form.limit_time);
           let now = Date.now();
           if (date < now) {
-            this.messages.push("Date can't be past");
+            this.messages.push(this.$t('not_past'));
           }
         }
       }
@@ -480,7 +489,7 @@ export default {
         /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
       );
       if (!this.form.files.match(regex)) {
-        this.messages.push("That is not an URL");
+        this.messages.push(this.$t('not_url'));
       }
 
       if (this.messages.length > 0) {
@@ -512,7 +521,10 @@ export default {
     },
     deleteOffer(id, text) {
       var token = "JWT " + this.$cookies.get("token");
-       this.$bvModal.msgBoxConfirm(text).then(value => {
+       this.$bvModal.msgBoxConfirm(text,  {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
             if(value === true){
               this.$http
                 .delete("http://localhost:8000/api/v1/company/offer/" + id, {
@@ -521,7 +533,9 @@ export default {
                   }
                 })
                 .then(result => {
-                  this.$bvModal.msgBoxOk(this.$t('successful_del_offer'));
+                  this.$bvModal.msgBoxOk(this.$t('successful_del_offer'),  {
+                    okTitle=this.$t('accept')
+                  });
                   window.location.href = "/explore.html";
                 });
             }
@@ -573,7 +587,9 @@ export default {
         )
         .then(result => {
           this.items = result.data;
-          this.$bvModal.msgBoxOk(this.$t('updated_offer'))
+          this.$bvModal.msgBoxOk(this.$t('updated_offer'),  {
+            okTitle=this.$t('accept')
+          })
           window.location.href = "/explore.html";
         });
     }

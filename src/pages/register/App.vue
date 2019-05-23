@@ -384,7 +384,7 @@ export default {
         this.$http
           .post("http://localhost:8000/api/v1/register", formData)
           .then(result => {
-            this.registerMessage = result.data.message;
+            this.registerMessage = this.$t('success_register')
             this.registered = true;
           });
       }
@@ -409,7 +409,9 @@ export default {
             });
         })
         .catch(err => {
-          this.$bvModal.msgBoxOk(this.$t('error_signin'))
+          this.$bvModal.msgBoxOk(this.$t('error_signin'),  {
+            okTitle=this.$t('accept')
+          })
         });
       if (this.selected == "DataScientist") {
         this.$router.push({ path: "/my_cv" });

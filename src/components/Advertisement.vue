@@ -4,7 +4,7 @@
         <a :href="ad_url" target="_blank">
             <b-img class="advertisement-image" alt="Ad image" center :src="ad_img"/>
         </a>
-        <input class="close_add" type="button" onclick="document.getElementsByClassName('advertisement')[0].style.display='none';" value="Close ad" />
+        <button class="close_add" type="button" onclick="document.getElementsByClassName('advertisement')[0].style.display='none';">{{$t('close')}}</button>
     </div>
 </template>
 <script>

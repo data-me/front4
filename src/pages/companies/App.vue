@@ -200,16 +200,19 @@ export default {
       const formData = new FormData();
       this.messages = [];
       if (this.form.name.length == 0) {
-        this.messages.push("Name is required");
+        var error_message_1 = this.$t('name_req')
+        this.messages.push(error_message_1);
       }
       if (this.form.description.length == 0) {
-        this.messages.push("Description is required");
+        var error_message_2 = this.$t('description_req')
+        this.messages.push(error_message_2);
       }
       var regex = new RegExp(
         /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
       );
       if (!this.form.logo.match(regex)) {
-        this.messages.push("That is not an URL");
+        var error_message_3 = this.$t('not_url')
+        this.messages.push(error_message_3);
       }
 
       if (this.messages.length > 0) {
@@ -239,7 +242,10 @@ export default {
       }
 
 
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text,  {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+        }).then(value => {
         if(value === true){
           let pdfName = items[0].name;
 
@@ -297,7 +303,10 @@ export default {
       }
       
 
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text, {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+        }).then(value => {
         if(value === true){
         var text =
           "{name:" +

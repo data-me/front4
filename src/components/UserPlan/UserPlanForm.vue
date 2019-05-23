@@ -67,10 +67,11 @@
         payment_question() {
         this.$swal({
             type: 'warning',
-            title: 'Proceed to payment',
+            title: this.$t('proceed_payment'),
             showCancelButton: true,
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Pay!'
+            confirmButtonText: this.$t('pay'),
+            cancelButtonText: this.$t('cancel'),
         }).then((result) =>{
             if(result.value){
             window.location.href = this.redirect_url;

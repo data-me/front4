@@ -4,10 +4,10 @@
     <div>
 
         <b-modal v-model="showModal" ref="messages" id="messages" hide-footer size="xl" title="Erros">
-            <template slot="modal-header"> Please check the errors below </template>
+            <template slot="modal-header"> {{$t('check_errors')}} </template>
             <li id="messagesError" v-for="message in this.messages"> {{message}}</li>
-            <template slot="modal-footer"><button class="btn btn-primary">Save Changes</button></template>
-            <b-button class="mt-3" variant="outline-danger" block @click="showModal = false">Close</b-button>
+            <template slot="modal-footer"><button class="btn btn-primary">{{$t('save_changes')}}</button></template>
+            <b-button class="mt-3" variant="outline-danger" block @click="showModal = false">{{$t('close')}}</b-button>
         </b-modal>
 
         <b-button v-b-modal="'create-item-section-form' + secid">{{$t('newsectionitem')}}</b-button>
@@ -20,7 +20,7 @@
                     id="name"
                     v-model="item.name"
                     required
-                    placeholder="Name this record"
+                    :placeholder="this.$t('name_record')"
                 ></b-form-input>
 
                     <label for="entity">{{$t('entity')}}:</label>
@@ -28,14 +28,14 @@
                     id="entity"
                     v-model="item.entity"
                     required
-                    placeholder="Organization or Entity"
+                    :placeholder="this.$t('org_entity')"
                 ></b-form-input>
 
                     <label for="description">{{$t('description')}}:</label>
                 <b-form-textarea
                     id="description"
                     v-model="item.description"
-                    placeholder="Enter a description..."
+                    :placeholder="this.$t('enter_description')"
                     rows="3"
                     max-rows="6"
                     required
@@ -87,11 +87,15 @@ export default {
         this.messages = []
      var datePattern = new RegExp(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g);
       if (!this.item.datestart.match(datePattern)) {
-        this.$bvModal.msgBoxOk(this.$t('error_start_date'))
+        this.$bvModal.msgBoxOk(this.$t('error_start_date'), {
+          okTitle=this.$t('accept')
+        })
       }
 
     if (this.item.datefinish != '' && !this.item.datefinish.match(datePattern)) {
-        this.$bvModal.msgBoxOk(this.$t('error_end_date'))
+        this.$bvModal.msgBoxOk(this.$t('error_end_date'), {
+          okTitle=this.$t('accept')
+        })
       }
 
       if(this.messages.length > 0){

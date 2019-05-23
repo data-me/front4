@@ -22,7 +22,7 @@
       id="submited"
       hide-footer
       size="xl"
-      title="submited"
+      :title="this.$t('create_review')"
     >
       <template slot="modal-header">{{$t('congrats')}}</template>
       {{$t('submited_success')}}
@@ -250,11 +250,13 @@ export default {
         /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
       );
       if (!this.submitForm.file.match(regex)) {
-        this.messages.push("That is not an URL");
+        var error_message_1 = this.$t('not_url')
+        this.messages.push(error_message_1);
       }
 
       if (!this.submitForm.comments > 0) {
-        this.messages.push("Comments are required");
+        var error_message_2 = this.$t('comments_req')
+        this.messages.push(error_message_2);
       }
 
       if (this.messages.length > 0) {

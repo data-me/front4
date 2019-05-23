@@ -262,7 +262,7 @@
       :title="$t('errors')"
     >
       <template>
-        Please check the errors
+        {{$t('check_errors')}}
         <li
           variant="danger"
           v-bind:key="message.id"
@@ -397,22 +397,27 @@ export default {
       const formData = new FormData();
       this.messages = [];
       if (this.form.name.length == 0) {
-        this.messages.push("Name is required");
+        var error_message_1 = this.$t('name_req')
+        this.messages.push(error_message_1);
       }
       if (this.form.surname.length == 0) {
-        this.messages.push("Surname is required");
+        var error_message_2 = this.$t('surname_req')
+        this.messages.push(error_message_2);
       }
 
       if (this.form.email.length == 0) {
-        this.messages.push("Email is required");
+        var error_message_3 = this.$t('email_req')
+        this.messages.push(error_message_3);
       }
       var regex = new RegExp(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g);
       if (!this.form.phone.match(regex)) {
-        this.messages.push("That is not a telephone number");
+        var error_message_4 = this.$t('phone_req')
+        this.messages.push(error_message_4);
       }
 
       if (this.form.address.length == 0) {
-        this.messages.push("Address is required");
+        var error_message_5 = this.$t('address_req')
+        this.messages.push(error_message_5);
       }
       if (this.messages.length > 0) {
         this.modalShow = true;
@@ -531,7 +536,10 @@ export default {
     },
     deleteItem(item_id, text) {
       var token = "JWT " + this.$cookies.get("token");
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text,  {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
         if(value === true){
           this.$http.delete(
             "http://localhost:8000/api/v2/data/delete_item/" + item_id,
@@ -547,7 +555,10 @@ export default {
     },
     deleteSection(section_id, text) {
       var token = "JWT " + this.$cookies.get("token");
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text, {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
         if(value === true){
           this.$http.delete(
             "http://localhost:8000/api/v2/data/delete_section/" + section_id,
@@ -589,7 +600,10 @@ export default {
         var phone = "Teléfono: ";
       }
 
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text, {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
         if(value === true){
         var nameSurname = user.name + " " + user.surname;
         let pdfName = nameSurname;
@@ -643,7 +657,10 @@ export default {
         var text =
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
       }
-       this.$bvModal.msgBoxConfirm(text).then(value => {
+       this.$bvModal.msgBoxConfirm(text, {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
         if(value === true){
         var text =
           "{name:" +

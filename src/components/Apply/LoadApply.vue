@@ -51,7 +51,7 @@
       ><b-form-textarea
           id="textarea"
           v-model="applyDescription"
-          placeholder="Enter something..."
+          placeholder=""
           rows="3"
           max-rows="6"
         ></b-form-textarea>
@@ -151,7 +151,9 @@ Vue.use(VueRouter)
       }).then((result) => {
         this.offertodl = result.data,
         this.url = this.offertodl.file
-        this.$bvModal.msgBoxOk(this.url)
+        this.$bvModal.msgBoxOk(this.url, {
+          okTitle=this.$t('accept')
+        })
       })
   },
       redirectTo(offerId){
@@ -159,7 +161,10 @@ Vue.use(VueRouter)
       },
 
       toggleAcceptApply(id, text) {
-         this.$bvModal.msgBoxConfirm(text).then(value => {
+         this.$bvModal.msgBoxConfirm(text, {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
             if(value === true){
               var token = 'JWT ' + this.$cookies.get('token')
               var formAccept = new FormData()
@@ -167,22 +172,31 @@ Vue.use(VueRouter)
               this.$http.post('http://localhost:8000/api/v1/accept', formAccept, { headers:
               { Authorization: token }
               }).then((result) => {
-                  this.$bvModal.msgBoxOk(this.$t('sucessful_acc_apply'))
+                  this.$bvModal.msgBoxOk(this.$t('sucessful_acc_apply'), {
+                    okTitle=this.$t('accept')
+                  })
                   location.reload()
               })
         }})
      },
 
      deleteApplication(applicationId, text) {
-      this.$bvModal.msgBoxConfirm(text).then(value => {
+      this.$bvModal.msgBoxConfirm(text, {
+           okTitle=this.$t('accept'),
+           cancelTitle=this.$t('cancel')
+         }).then(value => {
             if(value === true){
               var token = 'JWT ' + this.$cookies.get('token')
               this.$http.delete('http://localhost:8000/api/v2/application/' + applicationId, { headers: { Authorization: token }}).then((result) => {
                   if (result.data.code == '200') {
-                    this.$bvModal.msgBoxOk(this.$t('delete_app_success'))
+                    this.$bvModal.msgBoxOk(this.$t('delete_app_success'), {
+                      okTitle=this.$t('accept')
+                    })
                   }
                   if (result.data.code == '401') {
-                    this.$bvModal.msgBoxOk(this.$t('delete_app_not_allowed'))
+                    this.$bvModal.msgBoxOk(this.$t('delete_app_not_allowed'),  {
+                      okTitle=this.$t('accept')
+                    })
                   }
                   location.reload()
               })
@@ -204,10 +218,14 @@ Vue.use(VueRouter)
         { Authorization: token }
         }).then((result) => {
             if (result.data.code == '200') {
-              this.$bvModal.msgBoxOk(this.$t('edit_app_success'))
+              this.$bvModal.msgBoxOk(this.$t('edit_app_success'),  {
+                okTitle=this.$t('accept')
+              })
             }
             if (result.data.code == '401') {
-              this.$bvModal.msgBoxOk(this.$t('edit_app_not_allowed'))
+              this.$bvModal.msgBoxOk(this.$t('edit_app_not_allowed'),  {
+                okTitle=this.$t('accept')
+              })
             }
             location.reload()
         })

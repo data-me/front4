@@ -86,8 +86,8 @@
               <label for="type">{{$t('change_status')}}</label>
               <br>
               <select v-model="selected">
-                <option>Accepted</option>
-                <option>Rejected</option>
+                <option>{{$t('accepted')}}</option>
+                <option>{{$t('rejected')}}</option>
               </select>
               <b-button
                 type="submit"
@@ -202,7 +202,7 @@ export default {
           headers: { Authorization: token }
         })
         .then(result => {
-          this.message = result.data.message;
+          this.message = this.$t('success_new_review');
           this.submited = true;
         });
     },
@@ -223,7 +223,9 @@ export default {
         .then(response => {
           this.forceFileDownload(response);
         })
-        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed')));
+        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed'),  {
+          okTitle=this.$t('accept')
+        }));
     },
     changeStatus(id) {
       this.errorMessage = "";
@@ -242,7 +244,7 @@ export default {
           headers: { Authorization: token }
         })
         .then(result => {
-          this.message = result.data.message;
+          this.message = this.$t('success_changed')
           this.submited = true;
         });
     }

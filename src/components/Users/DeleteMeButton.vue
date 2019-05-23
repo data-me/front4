@@ -22,11 +22,12 @@ export default {
       deleteConfirmation(){
         this.$swal({
             type: 'warning',
-            title: 'Are you sure you want to delete all your user information?',
-            text: 'This operation cannot be undone. All the information linked to you will be erased, this includes all your past actity in our platform',
+            title: this.$t('del_confirmation'),
+            text: this.$t('del_confirmation_text'),
             showCancelButton: true,
             //confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Delete'
+            confirmButtonText: this.$t('delete'),
+            cancelButtonText: this.$t('cancel')
         }).then((result) => {
             if (result.value) {
               this.deleteUser();
@@ -43,8 +44,8 @@ export default {
               if (result.data.success) {
                 this.$swal({
                   type: 'success',
-                  title: 'Deleted!',
-                  text: 'All your user information has been deleted.',
+                  title: this.$t('deleted'),
+                  text: this.$t('deleted_text')
                 }
                 ).then((result) => {
                   this.setCookie("token", "", -1);

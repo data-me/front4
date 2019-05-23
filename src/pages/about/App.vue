@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="../../assets/logo.png">
     <HelloWorld msg="This is about page"/>
-    <a href="/index">Go to home</a>
+    <a href="/index">{{$t('go_home')}}</a>
   </div>
 </template>
 

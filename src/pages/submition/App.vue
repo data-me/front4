@@ -95,8 +95,8 @@
               <label for="type">{{$t('change_status')}}</label>
               <br>
               <select v-model="selected">
-                <option>Accepted</option>
-                <option>Rejected</option>
+                <option>{{$t('accepted')}}</option>
+                <option>{{$t('rejected')}}</option>
               </select>
               <b-button
                 type="submit"
@@ -247,7 +247,9 @@ export default {
         .then(response => {
           this.forceFileDownload(response);
         })
-        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed')));
+        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed'),  {
+          okTitle=this.$t('accept')
+        }));
     },
     changeStatus(id) {
       this.errorMessage = "";

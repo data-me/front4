@@ -66,8 +66,8 @@
     success() {
         this.$swal({
             type: 'success',
-            title: 'Payment received successfully',
-            text: 'Thank you!'
+            title: this.$t('success_payment'),
+            text: this.$t('thank_you')
         }).then(result =>{
               window.location.href = 'http://localhost:8080/user_plan.html';
               this.$cookies.set("ads", "false");
@@ -79,8 +79,8 @@
       }
         this.$swal({
             type: 'error',
-            title: message,
-            text: 'PRO plan upgrade was not posible.'
+            title: this.$t('error_payment'),
+            text: this.$t('error_upgrade')
         }).then(result =>{
               window.location.href = 'http://localhost:8080/user_plan.html';
             });

@@ -1,6 +1,6 @@
 <template lang="html">
     <div>
-        <h4>Create Section</h4>
+        <h4>{{$t('create_section')}}</h4>
             <b-form id="section" @submit="onSubmit">
 
             <b-col sm="3">
