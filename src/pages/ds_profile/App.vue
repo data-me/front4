@@ -29,6 +29,15 @@ export default {
     };
   },
   mounted: function() {
+    var lang;
+
+    if (this.$cookies.get("lang")) {
+      lang = this.$cookies.get("lang");
+    } else {
+      lang = "en";
+    }
+    this.$i18n.locale = lang;
+
     var id_ds = window.location.search.split("=")[1];
 
     var token = "JWT " + this.$cookies.get("token");
