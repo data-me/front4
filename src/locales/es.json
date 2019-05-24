@@ -269,6 +269,7 @@
   "create_notification_all": "Crear una nueva notificación para todos los miembros de la aplicación",
   "description_min": "La descripcion debe contener al menos 10 caracteres",
   "price_positive": "La recompensa tiene que ser un número positivo",
-  "title_min": "El título debe contener al menos 5 caracteres"
-
+  "title_min": "El título debe contener al menos 5 caracteres",
+  "success_profile": "Se ha guardado el perfil de forma satisfactoria.",
+  "success_item": "Se ha guardado el item."
 }

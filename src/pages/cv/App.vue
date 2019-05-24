@@ -444,7 +444,7 @@ export default {
           })
           .then(result => {
             this.ViewEdit = true;
-            this.updatedMessage = result.data.message;
+            this.updatedMessage = this.$t('success_profile');
             this.submited = true;
           });
       }
@@ -537,7 +537,7 @@ export default {
           })
           .then(result => {
             this.ViewEdit = true;
-            this.updatedMessage = result.data.message;
+            this.updatedMessage = this.$t('success_item');
             this.submited = true;
           });
       }
