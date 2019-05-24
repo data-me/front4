@@ -41,7 +41,7 @@ export default {
          }.then(value => {
         if(value === true){
           this.$http
-            .post(" http://localhost:8000/api/v2/delete_user", formData, {
+            .post(" https://api4-datame.herokuapp.com/api/v2/delete_user", formData, {
               headers: { Authorization: token }
             })
             .then(result => {

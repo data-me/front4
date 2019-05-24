@@ -38,7 +38,7 @@ export default {
           var token = "JWT " + this.$cookies.get("token");
           const formData = new FormData();
           this.$http
-          .post("http://localhost:8000/api/v3/delete_me", formData, {
+          .post("https://api4-datame.herokuapp.com/api/v3/delete_me", formData, {
               headers: { Authorization: token }
           }).then((result) => {
               if (result.data.success) {
