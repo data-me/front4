@@ -69,7 +69,7 @@
             title: this.$t('success_payment'),
             text: this.$t('thank_you')
         }).then(result =>{
-              window.location.href = 'http://localhost:8080/user_plan.html';
+              window.location.href = 'https://data-me.herokuapp.com/user_plan.html';
               this.$cookies.set("ads", "false");
             });
     },
@@ -82,7 +82,7 @@
             title: this.$t('error_payment'),
             text: this.$t('error_upgrade')
         }).then(result =>{
-              window.location.href = 'http://localhost:8080/user_plan.html';
+              window.location.href = 'https://data-me.herokuapp.com/user_plan.html';
             });
     }
   }
