@@ -586,7 +586,9 @@ export default {
       this.formDiobrando.description = item.description;
       this.formDiobrando.entity = item.entity;
       this.formDiobrando.date_start = item.date_start;
+      if(item.date_finish!=null && item.date_finish.length> 0){
       this.formDiobrando.date_finish = item.date_finish;
+      }
     },
     moreFunctions() {
       this.submited = false;
