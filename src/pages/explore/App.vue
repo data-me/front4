@@ -346,7 +346,7 @@ export default {
             .then(result => {
               // El pago se ha guardado
               //alert(result.data.message);
-              this.$bvModal.msgBoxOk(this.$t('successful_payment'), {
+              this.$bvModal.msgBoxOk(this.$t('successful_payment'), function(){
                 okTitle=this.$t('accept')
               })
               // Hago la llamada para obtener las offers con la nueva offer dentro
@@ -398,7 +398,7 @@ export default {
   },
   methods: {
     toggleCreateApply(text) {
-      this.$bvModal.msgBoxConfirm(text,  {
+      this.$bvModal.msgBoxConfirm(text,  function(){
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
          }).then(value => {
@@ -409,7 +409,7 @@ export default {
             this.formApply.title.length < 5 ||
             this.formApply.description.length < 10
           ) {
-            this.$bvModal.msgBoxOk(this.$t("fix_errors"),  {
+            this.$bvModal.msgBoxOk(this.$t("fix_errors"),  function(){
               okTitle=this.$t('accept')
             })
           } else {
@@ -421,7 +421,7 @@ export default {
                 headers: { Authorization: token }
               })
               .then(result => {
-                this.$bvModal.msgBoxOk(this.$t("successful_apply"), {
+                this.$bvModal.msgBoxOk(this.$t("successful_apply"), function(){
                   okTitle=this.$t('accept')
                 })
                 location.reload()
@@ -527,7 +527,7 @@ export default {
     },
     deleteOffer(id, text) {
       var token = "JWT " + this.$cookies.get("token");
-       this.$bvModal.msgBoxConfirm(text,  {
+       this.$bvModal.msgBoxConfirm(text, function() {
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
          }).then(value => {
@@ -539,7 +539,7 @@ export default {
                   }
                 })
                 .then(result => {
-                  this.$bvModal.msgBoxOk(this.$t('successful_del_offer'),  {
+                  this.$bvModal.msgBoxOk(this.$t('successful_del_offer'), function() {
                     okTitle=this.$t('accept')
                   });
                   window.location.href = "/explore.html";
@@ -606,7 +606,7 @@ export default {
         )
         .then(result => {
           this.items = result.data;
-          this.$bvModal.msgBoxOk(this.$t('updated_offer'),  {
+          this.$bvModal.msgBoxOk(this.$t('updated_offer'), function() {
             okTitle=this.$t('accept')
           })
           window.location.href = "/explore.html";

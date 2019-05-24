@@ -247,7 +247,7 @@ export default {
         .then(response => {
           this.forceFileDownload(response);
         })
-        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed'),  {
+        .catch(e => this.$bvModal.msgBoxOk(this.$t('failed'),  function(){
           okTitle=this.$t('accept')
         }));
     },

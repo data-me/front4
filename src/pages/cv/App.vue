@@ -544,7 +544,7 @@ export default {
     },
     deleteItem(item_id, text) {
       var token = "JWT " + this.$cookies.get("token");
-      this.$bvModal.msgBoxConfirm(text,  {
+      this.$bvModal.msgBoxConfirm(text, function() {
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
          }).then(value => {
@@ -563,7 +563,7 @@ export default {
     },
     deleteSection(section_id, text) {
       var token = "JWT " + this.$cookies.get("token");
-      this.$bvModal.msgBoxConfirm(text, {
+      this.$bvModal.msgBoxConfirm(text, function(){
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
          }).then(value => {
@@ -608,7 +608,7 @@ export default {
         var phone = "Teléfono: ";
       }
 
-      this.$bvModal.msgBoxConfirm(text, {
+      this.$bvModal.msgBoxConfirm(text, function() {
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
          }).then(value => {
@@ -665,7 +665,7 @@ export default {
         var text =
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
       }
-       this.$bvModal.msgBoxConfirm(text, {
+       this.$bvModal.msgBoxConfirm(text, function(){
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
          }).then(value => {

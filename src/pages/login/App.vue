@@ -84,7 +84,7 @@ export default {
             });
         })
         .catch(() => {
-          this.$bvModal.msgBoxOk(this.$t("login_error"),  {
+          this.$bvModal.msgBoxOk(this.$t("login_error"),  function(){
             okTitle=this.$t('accept')
           })
         });

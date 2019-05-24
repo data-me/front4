@@ -242,7 +242,7 @@ export default {
       }
 
 
-      this.$bvModal.msgBoxConfirm(text,  {
+      this.$bvModal.msgBoxConfirm(text, function() {
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
         }).then(value => {
@@ -303,7 +303,7 @@ export default {
       }
       
 
-      this.$bvModal.msgBoxConfirm(text, {
+      this.$bvModal.msgBoxConfirm(text, function(){
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
         }).then(value => {

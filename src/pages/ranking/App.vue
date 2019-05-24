@@ -24,7 +24,7 @@
                   <div class="card bg-light mb-3">
                     <h2 class="card-header">{{item.reviewed_name}} <br></h2>
                     <h2 class="card-header text-white bg-info">{{$t('Average')}}: {{item.average}} <br></h2>
-                    <h2 class="card-header">{{$t('LastReview')}}<h4 style="color:#707070;">{{item.comments}}</h4></h2>
+                    <h2 class="card-header">{{$t('LastReview')}}:<h4 style="color:#707070;">{{item.comments}}</h4></h2>
                 </div>
 
               </b-card-body>

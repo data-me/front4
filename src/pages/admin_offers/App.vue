@@ -100,7 +100,7 @@ export default {
     deleteOffer(offer_id) {
       var token = "JWT " + this.$cookies.get("token");
     
-      this.$bvModal.msgBoxConfirm(this.$t('confirm_delete_offer'),  {
+      this.$bvModal.msgBoxConfirm(this.$t('confirm_delete_offer'), function() {
            okTitle=this.$t('accept'),
            cancelTitle=this.$t('cancel')
         }).then(value => {
@@ -116,7 +116,7 @@ export default {
               }
             )
             .then(result => {
-              this.$bvModal.msgBoxOk(this.$t('successful_del_offer'), {
+              this.$bvModal.msgBoxOk(this.$t('successful_del_offer'), function(){
                 okTitle=this.$t('accept')
               });
               window.location.href = "/admin_offers.html";

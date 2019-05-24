@@ -409,7 +409,7 @@ export default {
             });
         })
         .catch(err => {
-          this.$bvModal.msgBoxOk(this.$t('error_signin'),  {
+          this.$bvModal.msgBoxOk(this.$t('error_signin'),  function(){
             okTitle=this.$t('accept')
           })
         });

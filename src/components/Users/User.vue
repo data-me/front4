@@ -38,7 +38,7 @@ export default {
             var token = "JWT " + this.$cookies.get("token");
             const formData = new FormData();
             formData.append('user_id', user_id);
-            this.$bvModal.msgBoxConfirm(text, {
+            this.$bvModal.msgBoxConfirm(text, function(){
               okTitle=this.$t('accept'),
               cancelTitle=this.$t('cancel')
             }).then(value => {
