@@ -236,7 +236,6 @@
           <b-input
             type="text"
             v-model="formApply.title"
-            :state="tittleApply"
             id="title"
             aria-describedby="titleHelpBlock"
           />
@@ -248,7 +247,6 @@
             type="text"
             id="description"
             v-model="formApply.description"
-            :state="descriptionApply"
             aria-describedby="descriptionHelpBlock"
           />
           <b-form-text id="descriptionHelpBlock">{{$t('description_apply_placeholder')}}</b-form-text>
