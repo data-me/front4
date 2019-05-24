@@ -2,14 +2,13 @@
 
 
     <div>
-<!--
+
         <b-modal v-model="showModal" ref="messages" id="messages" hide-footer size="xl" title="Erros">
             <template slot="modal-header"> {{$t('check_errors')}} </template>
             <li id="messagesError" v-for="message in this.messages"> {{message}}</li>
             <template slot="modal-footer"><button class="btn btn-primary">{{$t('save_changes')}}</button></template>
             <b-button class="mt-3" variant="outline-danger" block @click="showModal = false">{{$t('close')}}</b-button>
         </b-modal>
--->
         <b-button v-b-modal="'create-item-section-form' + secid">{{$t('newsectionitem')}}</b-button>
 
         <b-modal :id="'create-item-section-form' + secid" hide-footer ref="newItemMessage" size="x1" :title="$t('newsectionitem')">
@@ -41,19 +40,22 @@
                     required
                 ></b-form-textarea>
 
-                    <label for="datestart">{{$t('date_start')}}:</label>
+                    <label for="datestart">{{$t('datestart')}}:</label>
 
                 <b-form-input
                     id="datestart"
                     v-model="item.datestart"
                     placeholder="yyyy-MM-dd"
+                    :state="this.item.datestart.length > 0 && new Date(this.item.datestart) < new Date() && (this.item.datefinish.length == 0 || (this.item.datefinish.length != 0 && new Date(this.item.datefinish) > new Date(this.item.datestart))) "
                     required
                 ></b-form-input>
 
-                    <label for="datefinish">{{$t('date_finish')}}:</label>
+                    <label for="datefinish">{{$t('datefinish')}}:</label>
                 <b-form-input
                     id="datefinish"
                     v-model="item.datefinish"
+                    :state="this.item.datestart.length == 0 || (new Date(this.item.datefinish) < new Date() && (new Date(this.item.datefinish) > new Date(this.item.datestart))) "
+
                     placeholder="yyyy-MM-dd"
                 ></b-form-input>
                 <br/>
@@ -85,21 +87,49 @@ export default {
     onSubmit(evt) {
       evt.preventDefault()
         this.messages = []
+         var now = new Date();
+      var dateStart = new Date(this.item.datestart)
      var datePattern = new RegExp(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g);
       if (!this.item.datestart.match(datePattern)) {
-          this.messages.push('error_start_date')
-        this.$bvModal.msgBoxOk(this.$t('error_start_date'), {
-          okTitle:this.$t('accept')
-        })
+          if (this.language == "en") {
+          this.messages.push("Starting date doesn't match the patter");
+        } else {
+          this.messages.push("La fecha de comienzo no cumple el patron");
+        }
       }
 
     if (this.item.datefinish != '' && !this.item.datefinish.match(datePattern)) {
-        this.$bvModal.msgBoxOk(this.$t('error_end_date'), {
-          okTitle:this.$t('accept')
-        })
-        this.messages.push('error_start_date')
+        if (this.language == "en") {
+          this.messages.push("Finish date doesn't match the pattern");
+        } else {
+          this.messages.push("La fecha de fin no cumple el patron");
+        }
       }
 
+       if (this.item.datestart.length == 0) {
+        if (this.language == "en") {
+          this.messages.push("Starting date is required");
+        } else {
+          this.messages.push("la fecha de inicio es requerida");
+        }
+      }
+      if (this.item.datefinish.length != 0) {
+          var dateEnd = new Date(this.item.datefinish)
+        if (dateEnd > now){
+             if (this.language == "en") {
+          this.messages.push("The finish date must be past");
+        } else {
+          this.messages.push("La fecha de fin debe de ser en pasado");
+        }
+        }
+        if (dateEnd < dateStart){
+             if (this.language == "en") {
+          this.messages.push("The finish date must be after start date");
+        } else {
+          this.messages.push("la fecha de fin debe de ser despues de la fecha de inicio");
+        }
+        }
+      }
       if(this.messages.length > 0){
        this.showModal = true;
       }
