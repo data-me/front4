@@ -46,7 +46,6 @@
                     id="datestart"
                     v-model="item.datestart"
                     placeholder="yyyy-MM-dd"
-                    :state="this.item.datestart.length > 0 && new Date(this.item.datestart) < new Date() && (this.item.datefinish.length == 0 || (this.item.datefinish.length != 0 && new Date(this.item.datefinish) > new Date(this.item.datestart))) "
                     required
                 ></b-form-input>
 
@@ -54,7 +53,6 @@
                 <b-form-input
                     id="datefinish"
                     v-model="item.datefinish"
-                    :state="this.item.datestart.length == 0 || (new Date(this.item.datefinish) < new Date() && (new Date(this.item.datefinish) > new Date(this.item.datestart))) "
 
                     placeholder="yyyy-MM-dd"
                 ></b-form-input>
