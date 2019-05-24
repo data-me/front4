@@ -14,7 +14,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "2.0.0-rc.19",
+    "bootstrap-vue": "^2.0.0-rc.19",
     "express": "^4.16.4",
     "i": "^0.3.6",
     "image-to-base64": "2.0.1",

@@ -248,7 +248,7 @@ export default {
           this.forceFileDownload(response);
         })
         .catch(e => this.$bvModal.msgBoxOk(this.$t('failed'),  {
-          okTitle=this.$t('accept')
+          okTitle:this.$t('accept')
         }));
     },
     changeStatus(id) {

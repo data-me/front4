@@ -152,7 +152,7 @@ Vue.use(VueRouter)
         this.offertodl = result.data,
         this.url = this.offertodl.file
         this.$bvModal.msgBoxOk(this.url, {
-          okTitle=this.$t('accept')
+          okTitle:this.$t('accept')
         })
       })
   },
@@ -162,8 +162,8 @@ Vue.use(VueRouter)
 
       toggleAcceptApply(id, text) {
          this.$bvModal.msgBoxConfirm(text, {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }).then(value => {
             if(value === true){
               var token = 'JWT ' + this.$cookies.get('token')
@@ -173,7 +173,7 @@ Vue.use(VueRouter)
               { Authorization: token }
               }).then((result) => {
                   this.$bvModal.msgBoxOk(this.$t('sucessful_acc_apply'), {
-                    okTitle=this.$t('accept')
+                    okTitle:this.$t('accept')
                   })
                   location.reload()
               })
@@ -182,20 +182,20 @@ Vue.use(VueRouter)
 
      deleteApplication(applicationId, text) {
       this.$bvModal.msgBoxConfirm(text, {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }).then(value => {
             if(value === true){
               var token = 'JWT ' + this.$cookies.get('token')
               this.$http.delete('http://localhost:8000/api/v2/application/' + applicationId, { headers: { Authorization: token }}).then((result) => {
                   if (result.data.code == '200') {
                     this.$bvModal.msgBoxOk(this.$t('delete_app_success'), {
-                      okTitle=this.$t('accept')
+                      okTitle:this.$t('accept')
                     })
                   }
                   if (result.data.code == '401') {
                     this.$bvModal.msgBoxOk(this.$t('delete_app_not_allowed'),  {
-                      okTitle=this.$t('accept')
+                      okTitle:this.$t('accept')
                     })
                   }
                   location.reload()
@@ -219,12 +219,12 @@ Vue.use(VueRouter)
         }).then((result) => {
             if (result.data.code == '200') {
               this.$bvModal.msgBoxOk(this.$t('edit_app_success'),  {
-                okTitle=this.$t('accept')
+                okTitle:this.$t('accept')
               })
             }
             if (result.data.code == '401') {
               this.$bvModal.msgBoxOk(this.$t('edit_app_not_allowed'),  {
-                okTitle=this.$t('accept')
+                okTitle:this.$t('accept')
               })
             }
             location.reload()

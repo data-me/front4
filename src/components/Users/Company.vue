@@ -36,8 +36,8 @@ export default {
       const formData = new FormData();
       formData.append("user_id", user_id);
       this.$bvModal.msgBoxConfirm(text), {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }.then(value => {
         if(value === true){
           this.$http

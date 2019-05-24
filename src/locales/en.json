@@ -262,5 +262,9 @@
   "file_req": "File is required",
   "contract_req": "Contract is required",
   "check_pattern": "Please check date pattern",
-  "not_past": "Date cannot be in past"
+  "not_past": "Date cannot be in past",
+  "title_help": "The main subject of your email notification, max 100 characters.",
+  "body_help": "The body of your notification, max 1000 characters.",
+  "notification_button": "Create notification",
+  "create_notification_all": "Create a new notification message for all the users of the application"
 }

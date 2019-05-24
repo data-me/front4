@@ -67,7 +67,7 @@
     </div>
 
     <div v-if="user_type === 'admin'" class="create-notification">
-      <b-button id="create-notification" v-b-modal.submited_notification style="color:#b9bc0b;background-color:white;border-color:#b9bc0b;" >
+      <b-button id="create-notification" v-b-modal.modalxl2 style="color:#b9bc0b;background-color:white;border-color:#b9bc0b;" >
         <font-awesome-icon style="color:#b9bc0b" :icon="['fas','bell']"/>
         {{$t('create_notification')}}
       </b-button>
@@ -157,6 +157,39 @@
           <b-button class="mt-2" variant="success" block @click="toggleModalMessage">{{$t('message_create')}}</b-button>
         </b-form>
       </b-modal>
+
+          <!-- Create a new notification -->
+    <div>
+      <b-modal id="modalxl2" hide-footer ref="newNotification" size="xl" :title="this.$t('create_notification_all')">
+        <b-form @submit.prevent>
+          <label for="title">{{$t('title')}}</label>
+          <b-input
+            type="text"
+            v-model="form.title"
+            id="title"
+            :state="form.title.length > 0"
+            :maxlength="100"
+            aria-describedby="titleHelpBlock"
+          />
+          <b-form-text id="titleHelpBlock">{{$t('title_help')}}</b-form-text>
+          <br>
+          <label for="body">{{$t('body')}}</label>
+          <b-form-textarea
+            type="text"
+            id="body"
+            v-model="form.body"
+            :state="form.body.length > 0"
+            :maxlength="1000"
+            aria-describedby="bodyHelpBlock"
+          />
+          <b-form-text id="bodyHelpBlock">{{$t('body_help')}}</b-form-text>
+          <br>
+
+
+          <b-button class="mt-2" variant="success" block @click="toggleModalNotification">{{$t("notification_button")}}</b-button>
+        </b-form>
+      </b-modal>
+    </div>
     </div>
 
   <div v-if="items.length == 0">
@@ -289,7 +322,6 @@ export default {
           })
           .then(result => {
             this.submited = true;
-            this.submited_notification = true;
             this.message = result.data.message;
           });
       }

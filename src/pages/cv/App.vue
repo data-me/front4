@@ -535,8 +535,8 @@ export default {
     deleteItem(item_id, text) {
       var token = "JWT " + this.$cookies.get("token");
       this.$bvModal.msgBoxConfirm(text,  {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }).then(value => {
         if(value === true){
           this.$http.delete(
@@ -554,8 +554,8 @@ export default {
     deleteSection(section_id, text) {
       var token = "JWT " + this.$cookies.get("token");
       this.$bvModal.msgBoxConfirm(text, {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }).then(value => {
         if(value === true){
           this.$http.delete(
@@ -599,8 +599,8 @@ export default {
       }
 
       this.$bvModal.msgBoxConfirm(text, {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }).then(value => {
         if(value === true){
         var nameSurname = user.name + " " + user.surname;
@@ -656,8 +656,8 @@ export default {
           "Esta acción descargará archivos en tu terminal. ¿Estas seguro?";
       }
        this.$bvModal.msgBoxConfirm(text, {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
          }).then(value => {
         if(value === true){
         var text =

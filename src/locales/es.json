@@ -262,5 +262,9 @@
   "file_req": "Es necesario un fichero",
   "contract_req": "Se requiere un contrato",
   "check_pattern": "Por favor revisa el patrón de la fecha",
-  "not_past": "La fecha no puede estar en pasado"
+  "not_past": "La fecha no puede estar en pasado",
+  "title_help": "El asunto principal de su aviso de notificación, max 100 caracteres.",
+  "body_help": "El cuerpo de su notificación, max 1000 caracteres.",
+  "notification_button": "Crear una notification",
+  "create_notification_all": "Crear una nueva notificación para todos los miembros de la aplicación"
 }

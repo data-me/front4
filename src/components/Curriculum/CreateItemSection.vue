@@ -88,13 +88,13 @@ export default {
      var datePattern = new RegExp(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g);
       if (!this.item.datestart.match(datePattern)) {
         this.$bvModal.msgBoxOk(this.$t('error_start_date'), {
-          okTitle=this.$t('accept')
+          okTitle:this.$t('accept')
         })
       }
 
     if (this.item.datefinish != '' && !this.item.datefinish.match(datePattern)) {
         this.$bvModal.msgBoxOk(this.$t('error_end_date'), {
-          okTitle=this.$t('accept')
+          okTitle:this.$t('accept')
         })
       }
 

@@ -243,8 +243,8 @@ export default {
 
 
       this.$bvModal.msgBoxConfirm(text,  {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
         }).then(value => {
         if(value === true){
           let pdfName = items[0].name;
@@ -304,8 +304,8 @@ export default {
       
 
       this.$bvModal.msgBoxConfirm(text, {
-           okTitle=this.$t('accept'),
-           cancelTitle=this.$t('cancel')
+           okTitle:this.$t('accept'),
+           cancelTitle:this.$t('cancel')
         }).then(value => {
         if(value === true){
         var text =

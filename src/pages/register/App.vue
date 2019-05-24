@@ -410,7 +410,7 @@ export default {
         })
         .catch(err => {
           this.$bvModal.msgBoxOk(this.$t('error_signin'),  {
-            okTitle=this.$t('accept')
+            okTitle:this.$t('accept')
           })
         });
       if (this.selected == "DataScientist") {
