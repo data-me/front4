@@ -23,6 +23,16 @@ export default {
     Footer,
     DataScientistList,
     CompanyList
+  },
+  mounted: function() {
+    var lang;
+
+    if (this.$cookies.get("lang")) {
+      lang = this.$cookies.get("lang");
+    } else {
+      lang = "en";
+    }
+    this.$i18n.locale = lang;
   }
 };
 </script>

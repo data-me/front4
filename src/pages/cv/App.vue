@@ -352,6 +352,16 @@ export default {
     }
   },
   mounted: function() {
+
+    var lang;
+
+    if (this.$cookies.get("lang")) {
+      lang = this.$cookies.get("lang");
+    } else {
+      lang = "en";
+    }
+    this.$i18n.locale = lang;
+    
     var token = "JWT " + this.$cookies.get("token");
 
     this.$http.get("http://localhost:8000/api/v2/get_user_logged", {
