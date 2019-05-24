@@ -453,17 +453,20 @@ export default {
       if (this.form.title.length == 0) {
         this.messages.push(this.$t('title_req'));
       }
+      else if (this.form.title.length < 5){
+        this.messages.push(this.$t('title_min'));
+      }
       if (this.form.description.length == 0) {
         this.messages.push(this.$t('description_req'));
       }
       else if (this.form.description.length < 10){
-        this.messages.push("Description must contain at least 10 characters");
+        this.messages.push(this.$t('description_min'));
       }
       if (this.form.price_offered == null) {
         this.messages.push(this.$t('price_req'));
       }
       else if (this.form.price_offered < 0) {
-        this.messages.push("Price must be positive");
+        this.messages.push(this.$t('price_positive'));
       }
       if (this.form.limit_time == null) {
         this.messages.push(this.$t('limit_req'));

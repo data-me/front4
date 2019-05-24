@@ -266,5 +266,8 @@
   "title_help": "The main subject of your email notification, max 100 characters.",
   "body_help": "The body of your notification, max 1000 characters.",
   "notification_button": "Create notification",
-  "create_notification_all": "Create a new notification message for all the users of the application"
+  "create_notification_all": "Create a new notification message for all the users of the application",
+  "description_min": "Description must contain at least 10 characters",
+  "price_positive": "Price must be positive",
+  "title_min": "Title must contain at least 5 characters"
 }
