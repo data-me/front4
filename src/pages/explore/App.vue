@@ -110,7 +110,7 @@
                 class="card-link"
                 v-b-modal.EditOffer
                 variant="outline-primary"
-                @click="saveId(item.id)"
+                @click="saveId(item.id,item.title,item.description)"
               >{{$t('edit_offer')}}</b-button>
             </div>
           </b-card-body>
@@ -430,8 +430,10 @@ export default {
           }
       })
     },
-    saveId: function(idOffer) {
+    saveId: function(idOffer,title,description) {
       this.offerId = idOffer;
+      this.formEdit.title = title;
+      this.formEdit.description = description;
     },
     getCompany: function(companyId) {
       var token = "JWT " + this.$cookies.get("token");
