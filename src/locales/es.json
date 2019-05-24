@@ -210,5 +210,6 @@
   "manage_users": "Gestionar usuarios",
   "companies" : "Empresas",
   "data_scientists": "Cientificos de Datos",
-  "sec_notification_title": "Notificación de brecha de seguridad lanzada"
+  "sec_notification_title": "Notificación de brecha de seguridad lanzada",
+  "go_login":"Ir a iniciar sesión"
 }

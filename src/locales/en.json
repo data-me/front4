@@ -210,5 +210,6 @@
   "manage_users": "Manage Users",
   "companies" : "Companies",
   "data_scientists": "Data Scientists",
-  "sec_notification_title": "Security breach notified"
+  "sec_notification_title": "Security breach notified",
+  "go_login":"Go to log in"
 }
