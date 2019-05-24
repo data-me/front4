@@ -555,9 +555,7 @@ export default {
               headers: {
                 Authorization: token
               }
-            }).then(result =>{
-               alert('result.data.message')
-            });
+            })
           window.location.href = "/my_cv.html";
         }
       })

@@ -229,16 +229,16 @@
 
     <!-- Modal Pop up CreateApply -->
     <div>
-      <b-modal id="createApply" hide-footer ref="newApply" size="xl" :title="$t('create_apply')">
+      <b-modal id="createApply" hide-footer ref="newApply" size="xl" title="Create an apply">
         <b-form @submit.prevent>
           <label for="title">{{$t('title')}}</label>
 
           <b-input
             type="text"
             v-model="formApply.title"
+            :state="tittleApply"
             id="title"
             aria-describedby="titleHelpBlock"
-            :state="tittleApply"
           />
           <b-form-text id="titleHelpBlock">{{$t('title_offer_placeholder')}}</b-form-text>
           <b-form-invalid-feedback id="apply-tittle-feedback">{{$t('title_apply_feedback')}}</b-form-invalid-feedback>
@@ -291,6 +291,11 @@ export default {
     return {
       items: [],
       applications: [],
+      formApply: {
+        title: "",
+        description: "",
+        offerId: null
+      },
       form: {
         title: "",
         description: "",
@@ -298,11 +303,6 @@ export default {
         files: "",
         contract: "",
         limit_time: ""
-      },
-      formApply: {
-        title: "",
-        description: "",
-        offerId: null
       },
       formEdit: {
         title: "",
