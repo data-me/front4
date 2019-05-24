@@ -239,7 +239,7 @@
             id="title"
             aria-describedby="titleHelpBlock"
           />
-          <b-form-text id="titleHelpBlock">{{$t('title_offer_placeholder')}}</b-form-text>
+          <b-form-text id="titleHelpBlock">{{$t('title_offer_placeholder')}} {{$t('title_apply_feedback')}}</b-form-text>
           <b-form-invalid-feedback id="apply-tittle-feedback">{{$t('title_apply_feedback')}}</b-form-invalid-feedback>
           <br>
           <label for="description">{{$t('description')}}</label>
@@ -249,7 +249,7 @@
             v-model="formApply.description"
             aria-describedby="descriptionHelpBlock"
           />
-          <b-form-text id="descriptionHelpBlock">{{$t('description_apply_placeholder')}}</b-form-text>
+          <b-form-text id="descriptionHelpBlock">{{$t('description_apply_placeholder')}} {{$t('description_apply_feedback')}}</b-form-text>
           <b-form-invalid-feedback
             id="apply-description-feedback"
           >{{$t('description_apply_feedback')}}</b-form-invalid-feedback>
