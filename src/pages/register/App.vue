@@ -31,14 +31,16 @@
     >
       <template slot="modal-header">{{$t('congrats')}}</template>
       {{this.registerMessage}}
-      <b-form @submit="login">
+      <br/>
+      <b-button variant="success" href="/login">{{$t('go_login')}}</b-button>
+      <!--<b-form @submit="login">
         <b-button
           type="submit"
           class="mt-2"
           variant="success"
           @click.stop.prevent="login()"
         >{{$t('lets_start')}}</b-button>
-      </b-form>
+      </b-form>-->
     </b-modal>
 
     <b-form id="register" @submit="createUser">

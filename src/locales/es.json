@@ -271,5 +271,7 @@
   "price_positive": "La recompensa tiene que ser un número positivo",
   "title_min": "El título debe contener al menos 5 caracteres",
   "success_profile": "Se ha guardado el perfil de forma satisfactoria.",
-  "success_item": "Se ha guardado el item."
+  "success_item": "Se ha guardado el item.",
+  "sec_notification_title": "Notificación de brecha de seguridad lanzada",
+  "go_login":"Ir a iniciar sesión"
 }
