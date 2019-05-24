@@ -41,8 +41,7 @@
   </b-card>
 </div>
   <b-modal id="modal-edit-application" v-model="showEdit" centered :title="$t('edit_app')" hide-footer>
-    <b-form @submit="editApplication" @reset="onReset" v-if="showEdit">
-      <b-form-input v-model="applyDescription" hidden></b-form-input>
+    <b-form @submit="editApplication" v-if="showEdit">
       <b-form-group
         id="input-group-1"
         :label="$t('description')"
@@ -51,13 +50,14 @@
       ><b-form-textarea
           id="textarea"
           v-model="applyDescription"
+          :state = "applyDescription.length >= 10"
           placeholder=""
           rows="3"
           max-rows="6"
         ></b-form-textarea>
       </b-form-group>
 
-      <b-button type="submit" variant="primary" class="button">{{$t('edit')}}</b-button>
+      <b-button type="submit" :disabled ="isDisabledEdit" variant="primary" class="button">{{$t('edit')}}</b-button>
     </b-form>
   </b-modal>
 </div>
@@ -73,6 +73,7 @@ Vue.use(VueRouter)
 
 
   export default {
+   props: ['item','index','key', 'isCompany'],
    data () {
     return {
       items: [],
@@ -104,11 +105,14 @@ Vue.use(VueRouter)
         lang = 'en'
       }
       this.$i18n.locale = lang
+      this.applyDescription = this.item.description
 
   },computed: {
+     isDisabledEdit(){
+        return  (this.applyDescription.length < 10);
+      }
 
   },
-    props: ['item','index','key', 'isCompany'],
  methods: {
      onClickButton (event) {
       this.$emit('clicked', this.offerId)

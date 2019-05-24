@@ -87,6 +87,7 @@ export default {
         this.messages = []
      var datePattern = new RegExp(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/g);
       if (!this.item.datestart.match(datePattern)) {
+          this.messages.push('error_start_date')
         this.$bvModal.msgBoxOk(this.$t('error_start_date'), {
           okTitle:this.$t('accept')
         })
@@ -96,10 +97,11 @@ export default {
         this.$bvModal.msgBoxOk(this.$t('error_end_date'), {
           okTitle:this.$t('accept')
         })
+        this.messages.push('error_start_date')
       }
 
       if(this.messages.length > 0){
-          this.showModal = true
+       
       }
       else{
         var token = 'JWT ' + this.$cookies.get('token')
