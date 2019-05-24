@@ -2,14 +2,14 @@
 
 
     <div>
-
+<!--
         <b-modal v-model="showModal" ref="messages" id="messages" hide-footer size="xl" title="Erros">
             <template slot="modal-header"> {{$t('check_errors')}} </template>
             <li id="messagesError" v-for="message in this.messages"> {{message}}</li>
             <template slot="modal-footer"><button class="btn btn-primary">{{$t('save_changes')}}</button></template>
             <b-button class="mt-3" variant="outline-danger" block @click="showModal = false">{{$t('close')}}</b-button>
         </b-modal>
-
+-->
         <b-button v-b-modal="'create-item-section-form' + secid">{{$t('newsectionitem')}}</b-button>
 
         <b-modal :id="'create-item-section-form' + secid" hide-footer ref="newItemMessage" size="x1" :title="$t('newsectionitem')">
@@ -101,11 +101,11 @@ export default {
       }
 
       if(this.messages.length > 0){
-       
+       this.showModal = true;
       }
       else{
         var token = 'JWT ' + this.$cookies.get('token')
-      const baseURI = 'https://api4-datame.herokuapp.com/api/v1/item'
+      const baseURI = 'http://localhost:8000/api/v1/item'
       const formData = new FormData();
       formData.append('name', this.item.name);
       formData.append('secid', Number(this.secid));
