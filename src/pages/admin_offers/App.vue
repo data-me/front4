@@ -25,12 +25,12 @@
 
             <b-card-text>
               <span class="font-weight-bold">{{$t('creation_date')}}:</span>
-              {{ offer.creation_date.slice(0,10) }}
+              {{offer.creation_date.slice(0,10)}} {{ offer.creation_date.slice(11,16)}}
             </b-card-text>
 
             <b-card-text>
               <span class="font-weight-bold">{{$t('limit_date')}}:</span>
-              {{ offer.limit_time === None ? 'No limit time' : offer.limit_time.slice(0,10) }}
+              {{offer.limit_time.slice(0,10)}} {{ offer.limit_time.slice(11,16)}}
             </b-card-text>
 
             <b-card-text>

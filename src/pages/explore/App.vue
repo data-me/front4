@@ -71,11 +71,11 @@
             </b-card-text>
             <b-card-text>
               <span class="font-weight-bold">{{$t('creation_date')}}:</span>
-              {{item.creation_date.slice(0,10)}}
+              {{item.creation_date.slice(0,10)}} {{ item.creation_date.slice(11,16)}}
             </b-card-text>
             <b-card-text>
               <span class="font-weight-bold">{{$t('limit_date')}}:</span>
-              {{item.limit_time.slice(0,10)}}
+              {{item.limit_time.slice(0,10)}} {{ item.limit_time.slice(11,16)}}
             </b-card-text>
             <b-card-text>
               <span class="font-weight-bold">{{$t('state')}}:</span>
@@ -281,10 +281,10 @@ export default {
   },
   computed: {
     tittleApply() {
-      return this.formApply.title.length > 5 ? true : false;
+      return this.formApply.title.length >= 5 ? true : false;
     },
     descriptionApply() {
-      return this.formApply.description.length > 10 ? true : false;
+      return this.formApply.description.length >= 10 ? true : false;
     }
   },
   data() {
@@ -587,13 +587,16 @@ export default {
       var token = "JWT " + this.$cookies.get("token");
       this.messages = [];
       if (this.formEdit.title.length == 0) {
-        this.messages.push("Title is required");
+        this.messages.push(this.$t('title_req'));
+      }
+      else if (this.formEdit.title.length < 5){
+        this.messages.push(this.$t('title_min'));
       }
       if (this.formEdit.description.length == 0) {
-        this.messages.push("Description is required");
+        this.messages.push(this.$t('description_req'));
       }
       else if (this.formEdit.description.length < 10){
-        this.messages.push("Description must contain at least 10 characters");
+        this.messages.push(this.$t('description_min'));
       }
       if (this.messages.length > 0) {
         this.modalShow = true;

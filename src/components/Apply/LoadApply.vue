@@ -18,7 +18,7 @@
       <b-card-body>
         <b-card-text><span class="font-weight-bold">{{$t('description')}}: </span> {{item.description}}</b-card-text>
         <b-card-text><span class="font-weight-bold">{{$t('status')}}: </span> {{item.status}}</b-card-text>
-        <b-card-text><span class="font-weight-bold">{{$t('date')}}: </span>{{item.date.slice(0,10)}}</b-card-text>
+        <b-card-text><span class="font-weight-bold">{{$t('date')}}: </span>{{item.date.slice(0,10)}} {{item.date.slice(11,16)}}</b-card-text>
         <b-card-text><span class="font-weight-bold">{{$t('offer')}}: </span>{{item.offer_id}}</b-card-text>
         <div v-if="(user_type === 'ds' && item.status == 'AC')">
           <b-card-text><span class="font-weight-bold">{{$t('offer_file')}}: </span><a :href="item.offer__files" target="_blank">{{item.offer__files}}</a></b-card-text>
